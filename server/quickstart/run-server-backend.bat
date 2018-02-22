@@ -1,0 +1,2 @@
+set MAVEN_OPTS=-agentpath:C:\\Users\\huawei\\.IntelliJIdea2017.3\\config\\plugins\\jr-ide-idea\\lib\\jrebel6\\lib\\jrebel64.dll  -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=7005 -Dcom.sun.management.jmxremote= -Dcom.sun.management.jmxremote.port=7099 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=127.0.0.1  
+"D:\ideaIU-2017.3.1.win\plugins\maven\lib\maven3\bin\mvn.cmd"  spring-boot:run  

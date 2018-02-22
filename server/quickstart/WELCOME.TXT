@@ -1,0 +1,27 @@
+This is a sample 'per project' template.
+
+Templates doc: http://www.jaxio.com/documentation/celerio/templates.html
+
+Here is a simple script:
+
+    ${entity.model.type}: Passport
+    ${entity.model.var}: passport
+    ${entity.model.getter}: getPassport
+    ${entity.service.type}: PassportService
+    ${entity.service.var}: passportService
+    ${entity.service.getter}: getPassportService
+
+    ${entity.model.type}: Role
+    ${entity.model.var}: role
+    ${entity.model.getter}: getRole
+    ${entity.service.type}: RoleService
+    ${entity.service.var}: roleService
+    ${entity.service.getter}: getRoleService
+
+    ${entity.model.type}: User_
+    ${entity.model.var}: user_
+    ${entity.model.getter}: getUser_
+    ${entity.service.type}: User_Service
+    ${entity.service.var}: user_Service
+    ${entity.service.getter}: getUser_Service
+

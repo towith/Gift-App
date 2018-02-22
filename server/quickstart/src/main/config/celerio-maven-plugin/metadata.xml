@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.jaxio.com/schema/celerio">
+  <jdbcConnectivity driver="org.postgresql.Driver" url="jdbc:postgresql://localhost:5432/postgres" user="giftapp" password="pw4GiftApp" schemaName="" oracleRetrieveRemarks="false" oracleRetrieveSynonyms="true" reverseIndexes="true" reverseOnlyUniqueIndexes="true" catalog="">
+    <tableNamePatterns/>
+    <tableTypes>
+      <tableType>TABLE</tableType>
+    </tableTypes>
+  </jdbcConnectivity>
+  <databaseInfo databaseMajorVersion="9" databaseMinorVersion="5" databaseProductName="PostgreSQL" databaseProductVersion="9.5.10" driverMajorVersion="42" driverMinorVersion="2" driverName="PostgreSQL JDBC Driver" driverVersion="42.2.1" extraInfo=""/>
+  <tables>
+    <table name="passport" type="TABLE">
+      <columns>
+        <column name="id" columnDef="nextval('passport_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
+        <column name="passport_number" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="100" type="VARCHAR"/>
+        <column name="expiration_date" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="3" size="13" type="DATE"/>
+        <column name="holder_id" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="4" size="10" type="INTEGER"/>
+      </columns>
+      <indexes>
+        <indexe columnName="holder_id" indexName="passport_holder_id_key" nonUnique="false"/>
+        <indexe columnName="id" indexName="passport_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys>
+        <importedKey fkColumnName="holder_id" fkName="passport_holder_id_fkey" pkColumnName="id" pkTableName="user_"/>
+      </importedKeys>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="role" type="TABLE">
+      <columns>
+        <column name="id" columnDef="nextval('role_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
+        <column name="role_name" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="100" type="VARCHAR"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="role_pkey" nonUnique="false"/>
+        <indexe columnName="role_name" indexName="role_role_name_key" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="user_" type="TABLE">
+      <columns>
+        <column name="id" columnDef="nextval('user_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
+        <column name="login" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="100" type="VARCHAR"/>
+        <column name="password" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="100" type="VARCHAR"/>
+        <column name="email" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="4" size="100" type="VARCHAR"/>
+        <column name="is_enabled" columnDef="true" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="5" size="1" type="BIT"/>
+        <column name="civility" columnDef="'KM'" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="6" size="2" type="CHAR"/>
+        <column name="country_code" columnDef="'+33'" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="7" size="6" type="VARCHAR"/>
+        <column name="first_name" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="8" size="100" type="VARCHAR"/>
+        <column name="last_name" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="9" size="100" type="VARCHAR"/>
+        <column name="creation_date" columnDef="now()" decimalDigits="6" autoIncrement="false" nullable="true" ordinalPosition="10" size="29" type="TIMESTAMP"/>
+        <column name="creation_author" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="11" size="200" type="VARCHAR"/>
+        <column name="last_modification_date" columnDef="now()" decimalDigits="6" autoIncrement="false" nullable="true" ordinalPosition="12" size="29" type="TIMESTAMP"/>
+        <column name="last_modification_author" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="13" size="200" type="VARCHAR"/>
+        <column name="version" columnDef="0" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="14" size="10" type="INTEGER"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="user__pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys/>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="user_role" type="TABLE">
+      <columns>
+        <column name="user_id" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
+        <column name="role_id" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="10" type="INTEGER"/>
+      </columns>
+      <indexes>
+        <indexe columnName="user_id" indexName="user_role_pkey" nonUnique="false"/>
+        <indexe columnName="role_id" indexName="user_role_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys>
+        <importedKey fkColumnName="role_id" fkName="user_role_role_id_fkey" pkColumnName="id" pkTableName="role"/>
+        <importedKey fkColumnName="user_id" fkName="user_role_user_id_fkey" pkColumnName="id" pkTableName="user_"/>
+      </importedKeys>
+      <primaryKeys>
+        <primaryKey>user_id</primaryKey>
+        <primaryKey>role_id</primaryKey>
+      </primaryKeys>
+    </table>
+  </tables>
+</metadata>

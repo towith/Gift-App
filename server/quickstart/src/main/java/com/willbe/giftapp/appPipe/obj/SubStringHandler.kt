@@ -4,7 +4,6 @@ import com.willbe.giftapp.appPipe.getContext
 
 class SubStringHandler : Handler {
 
-    var replacement: String = ""
     var ruleList: List<HandleRule>? = null
 
     init {
@@ -13,7 +12,7 @@ class SubStringHandler : Handler {
 
     override fun doHandle(point: Context) {
         for (handleRule in ruleList!!) {
-            walkRule(handleRule, replacement)
+            walkRule(handleRule, getContext().get().replacement)
         }
     }
 

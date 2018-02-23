@@ -14,7 +14,9 @@ class PipeCallerTest : BaseTest() {
     @Test
     @Throws(IOException::class)
     fun call() {
-        setContext(context = Context("testdirxx"))
+        var context = Context("testdirxx")
+        context.replacement="gift from haven"
+        setContext(context)
         caller!!.call()
     }
 }

@@ -8,19 +8,20 @@
  * This header can be customized in Celerio conf...
  * Template pack-angular:src/test/java/ApplicationTests.java.p.vm
  */
-package com.willbe.giftapp;
+package com.willbe.giftapp
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
+import org.springframework.test.context.web.WebAppConfiguration
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner::class)
 @WebAppConfiguration
-public class ApplicationTests {
+class ApplicationTests {
+
 
     @Test
-    public void contextLoads() {
-        System.out.println("Just to make sure we reach this point.");
+    fun contextLoads() {
+        println("Just to make sure we reach this point.")
     }
 }

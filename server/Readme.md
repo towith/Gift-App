@@ -4,6 +4,7 @@ cd celerio-angular-quickstart/quickstart
 ng new web
 rm web/src/app/app.module.ts web/src/app/app.component.* web/src/styles.css
 mvn -Pdb,metadata,gen generate-sources
+mvn -Pgen generate-sources
 mvn spring-boot:run
 Make sure you wait until spring boot starts and listen on port 8080
 

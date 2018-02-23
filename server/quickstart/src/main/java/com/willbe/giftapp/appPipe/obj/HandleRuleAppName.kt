@@ -11,7 +11,7 @@ class HandleRuleAppName : HandleRule {
     }
 
     private fun replace(targetFile: String, token: String, replacement: String) {
-        var command = listOf<String>("sed", "-i", "'s#${token}#${replacement}'")
+        var command = listOf<String>("sed", "-i", "'s*${token}*${replacement}*'", targetFile)
         ProcessBuilder(command).start()
     }
 }

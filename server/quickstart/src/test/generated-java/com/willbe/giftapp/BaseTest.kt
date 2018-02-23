@@ -19,13 +19,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 @RunWith(SpringJUnit4ClassRunner::class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @ActiveProfiles("test")
-open //@ComponentScan(basePackages={"com.willbe.giftapp"})
+//@ComponentScan(basePackages = arrayOf("com.willbe.giftapp"))
 //@ContextConfiguration(classes = arrayOf(TestConfig::class))
-
-class BaseTest{
+open class BaseTest {
     @Test
     fun test() {
-
+        println("ok")
     }
-}
 
+}

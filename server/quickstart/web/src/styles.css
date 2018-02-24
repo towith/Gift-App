@@ -2,6 +2,7 @@
 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 /*@import '~https://fonts.googleapis.com/icon?family=Material+Icons';*/
+@import '~icon.css';
 
 @import '~primeng/resources/themes/omega/theme.css';
 @import '~primeng/resources/primeng.min.css';

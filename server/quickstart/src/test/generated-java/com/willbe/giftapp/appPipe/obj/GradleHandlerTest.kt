@@ -1,7 +1,7 @@
 package com.willbe.giftapp.appPipe.obj
 
 import com.willbe.giftapp.appPipe.getContext
-import com.willbe.giftapp.procCall
+import com.willbe.giftapp.libxx.procCall
 import org.junit.Test
 
 class GradleHandlerTest : HandlerTest(){

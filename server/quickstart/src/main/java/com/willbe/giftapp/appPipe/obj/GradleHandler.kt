@@ -1,7 +1,7 @@
 package com.willbe.giftapp.appPipe.obj
 
 import com.willbe.giftapp.appPipe.getContext
-import com.willbe.giftapp.procCall
+import com.willbe.giftapp.libxx.procCall
 import org.apache.commons.lang.SystemUtils
 
 class GradleHandler : Handler {
@@ -12,6 +12,6 @@ class GradleHandler : Handler {
         } else {
             cmd = arrayOf("gradlew", "build", "--stacktrace")
         }
-        procCall(cmd,  false,getContext().get().workingDir)
+        procCall(cmd, false, getContext().get().workingDir)
     }
 }

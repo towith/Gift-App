@@ -1,4 +1,4 @@
-package com.willbe.giftapp.appPipe.obj
+package com.willbe.giftapp.libxx
 
 import org.apache.commons.lang.StringUtils
 import java.io.File

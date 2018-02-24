@@ -1,6 +1,5 @@
-package com.willbe.giftapp
+package com.willbe.giftapp.libxx
 
-import com.willbe.giftapp.appPipe.obj.CommandUtil
 import org.apache.commons.lang.StringUtils
 import org.apache.commons.lang.SystemUtils
 import java.io.BufferedReader

@@ -4,5 +4,5 @@ import java.io.IOException
 
 interface Handler {
     @Throws(IOException::class)
-    fun doHandle(point: Context)
+    fun doHandle(context: Context)
 }

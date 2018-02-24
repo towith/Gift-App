@@ -10,7 +10,7 @@ class SubStringHandler : Handler {
         ruleList = mutableListOf(HandleRuleAppName())
     }
 
-    override fun doHandle(point: Context) {
+    override fun doHandle(context: Context) {
         for (handleRule in ruleList!!) {
             walkRule(handleRule, getContext().get().replacement)
         }

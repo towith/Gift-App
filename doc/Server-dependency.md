@@ -1,4 +1,4 @@
 # windows 
-u sed, gradle
+wsl linux, sed, gradle
 # linux
 sed gradle

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://www.jaxio.com/schema/celerio ./celerio.xsd">
+<celerio xmlns="http://www.jaxio.com/schema/celerio" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.jaxio.com/schema/celerio ./celerio.xsd">
     <configuration rootPackage="com.willbe.giftapp" applicationName="giftapp-server">
         <!-- Which tables are used for generation -->
         <tables>
             <!-- <table include="false" pattern="*_AUDIT"/> -->
+            <table include="false" pattern="twc_e_jldxx_400v_stat"/>
             <table include="false" pattern="jhi_persistent_*"/>
         </tables>
 
         <!-- global number mapping (optional) -->
         <numberMappings>
-            <numberMapping mappedType="M_BOOLEAN" columnSizeMin="1" columnSizeMax="2" columnDecimalDigitsMin="0"
-                           columnDecimalDigitsMax="0"/>
+            <numberMapping mappedType="M_BOOLEAN" columnSizeMin="1" columnSizeMax="2" columnDecimalDigitsMin="0" columnDecimalDigitsMax="0"/>
             <!-- <numberMapping mappedType="M_BIGDECIMAL" columnSizeMin="10" columnDecimalDigitsMin="4"/> -->
         </numberMappings>
 
@@ -51,27 +50,35 @@
         <entityConfig tableName="PASSPORT">
             <columnConfigs>
                 <columnConfig columnName="holder_id" associationDirection="BIDIRECTIONAL">
-                    <oneToManyConfig var="passportHolder" />
-                    <inverseOneToOneConfig var="passport" /><!-- var that is generated on User entity side -->
+                    <oneToManyConfig var="passportHolder"/>
+                    <inverseOneToOneConfig var="passport"/><!-- var that is generated on User entity side -->
+                </columnConfig>
+            </columnConfigs>
+        </entityConfig>
+        <entityConfig tableName="app_widget">
+            <columnConfigs>
+                <columnConfig columnName="app_id" associationDirection="BIDIRECTIONAL">
+                    <manyToOneConfig var="app"/>
+                    <!--<inverseOneToOneConfig var="appWidget"/>-->
                 </columnConfig>
             </columnConfigs>
         </entityConfig>
 
 
         <!--<entityConfig tableName="BOOK">-->
-            <!--<columnConfigs>-->
-                <!--<columnConfig columnName="author_id">-->
-                    <!--&lt;!&ndash; will generate the one to many association on the Author side &ndash;&gt;-->
-                    <!--<oneToManyConfig elementVar="book" var="books" orphanRemoval="true"/>-->
-                <!--</columnConfig>-->
-                <!--<columnConfig columnName="co_author_id" searchField="false" />-->
-                <!--<columnConfig columnName="extract_binary">-->
-                    <!--<labels>-->
-                        <!--<label lang="fr" value="Extrait (fichier)..."/>-->
-                        <!--<label value="Extract (file)..."/>-->
-                    <!--</labels>-->
-                <!--</columnConfig>-->
-            <!--</columnConfigs>-->
+        <!--<columnConfigs>-->
+        <!--<columnConfig columnName="author_id">-->
+        <!--&lt;!&ndash; will generate the one to many association on the Author side &ndash;&gt;-->
+        <!--<oneToManyConfig elementVar="book" var="books" orphanRemoval="true"/>-->
+        <!--</columnConfig>-->
+        <!--<columnConfig columnName="co_author_id" searchField="false" />-->
+        <!--<columnConfig columnName="extract_binary">-->
+        <!--<labels>-->
+        <!--<label lang="fr" value="Extrait (fichier)..."/>-->
+        <!--<label value="Extract (file)..."/>-->
+        <!--</labels>-->
+        <!--</columnConfig>-->
+        <!--</columnConfigs>-->
         <!--</entityConfig>-->
 
 
@@ -99,10 +106,10 @@
         <sharedEnumConfig name="CountryCode" type="CUSTOM">
             <enumValues>
                 <!--<enumValue name="China" value="+86">-->
-                    <!--<labels>-->
-                        <!--<label value="China"/>-->
-                        <!--<label value="China" lang="zh"/>-->
-                    <!--</labels>-->
+                <!--<labels>-->
+                <!--<label value="China"/>-->
+                <!--<label value="China" lang="zh"/>-->
+                <!--</labels>-->
                 <!--</enumValue>-->
                 <enumValue name="FRANCE" value="+33">
                     <labels>

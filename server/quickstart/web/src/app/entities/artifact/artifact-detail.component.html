@@ -1,0 +1,58 @@
+<div class="ContentSideSections Implementation">
+    <md-card *ngIf="artifact" ngForm #artifactForm="ngForm">
+        <md-card-title>Artifact Details</md-card-title>
+        <md-card-content>
+        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
+             <div class="ui-grid-row">
+                <div class="ui-grid-col-2"><label for="app">App*</label></div>
+                <div class="ui-grid-col-4">
+                    <app_-auto-complete [(ngModel)]="artifact.app" id="app" name="app" [disabled]="sub"></app_-auto-complete>
+                </div>
+                <div class="ui-grid-col-1" *ngIf="!sub">
+                    <button pButton id="gotoApp" type="button" (click)="gotoApp()" *ngIf="artifact.app" icon="fa-pencil" label="Edit"></button>
+                </div>
+                <div class="ui-grid-col-1" *ngIf="!sub">
+                    <button pButton id="clearApp" type="button" (click)="clearApp()" *ngIf="artifact.app" icon="fa-chain-broken" label="Clear"></button>
+                </div>
+            </div>
+             <div class="ui-grid-row">
+                <div class="ui-grid-col-2"><label for="user">User*</label></div>
+                <div class="ui-grid-col-4">
+                    <user_-auto-complete [(ngModel)]="artifact.user" id="user" name="user" [disabled]="sub"></user_-auto-complete>
+                </div>
+                <div class="ui-grid-col-1" *ngIf="!sub">
+                    <button pButton id="gotoUser" type="button" (click)="gotoUser()" *ngIf="artifact.user" icon="fa-pencil" label="Edit"></button>
+                </div>
+                <div class="ui-grid-col-1" *ngIf="!sub">
+                    <button pButton id="clearUser" type="button" (click)="clearUser()" *ngIf="artifact.user" icon="fa-chain-broken" label="Clear"></button>
+                </div>
+            </div>
+             <div class="ui-grid-row">
+                <div class="ui-grid-col-2"><label for="config">Config*</label></div>
+                <div class="ui-grid-col-4">
+                    <config_-auto-complete [(ngModel)]="artifact.config" id="config" name="config" [disabled]="sub"></config_-auto-complete>
+                </div>
+                <div class="ui-grid-col-1" *ngIf="!sub">
+                    <button pButton id="gotoConfig" type="button" (click)="gotoConfig()" *ngIf="artifact.config" icon="fa-pencil" label="Edit"></button>
+                </div>
+                <div class="ui-grid-col-1" *ngIf="!sub">
+                    <button pButton id="clearConfig" type="button" (click)="clearConfig()" *ngIf="artifact.config" icon="fa-chain-broken" label="Clear"></button>
+                </div>
+            </div>
+             <div class="ui-grid-row">
+                <div class="ui-grid-col-2"><label for="outputPath">Output Path </label></div>
+                <div class="ui-grid-col-6">
+                    <textarea pInputTextarea id="outputPath" [(ngModel)]="artifact.outputPath" autoResize="true" name="outputPath" #outputPath="ngModel"></textarea>
+                </div>
+                <div class="ui-grid-col-4">
+                </div>
+            </div>
+         </div>
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button *ngIf="sub" (click)="onCancel()"><md-icon>cancel</md-icon>Cancel</button>
+            <button md-raised-button (click)="onSave()" [disabled]="!artifactForm.form.valid"><md-icon>save</md-icon>Save</button>
+        </md-card-actions>
+    </md-card>
+
+</div>

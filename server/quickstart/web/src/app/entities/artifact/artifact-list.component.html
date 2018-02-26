@@ -1,0 +1,74 @@
+<div class="ContentSideSections Implementation">
+    <md-card *ngIf="!sub">
+        <md-card-title>Search Artifact with search criterias</md-card-title>
+        <md-card-content>
+        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" ngForm #artifactForm="ngForm">
+<div class="ui-grid-row">
+    <div class="ui-grid-col-2">
+        <label for="app">App</label>
+    </div>
+    <div class="ui-grid-col-6">
+        <app_-auto-complete [(ngModel)]="example.app" id="app" name="app"></app_-auto-complete>
+    </div>
+</div>
+<div class="ui-grid-row">
+    <div class="ui-grid-col-2">
+        <label for="user">User</label>
+    </div>
+    <div class="ui-grid-col-6">
+        <user_-auto-complete [(ngModel)]="example.user" id="user" name="user"></user_-auto-complete>
+    </div>
+</div>
+<div class="ui-grid-row">
+    <div class="ui-grid-col-2">
+        <label for="config">Config</label>
+    </div>
+    <div class="ui-grid-col-6">
+        <config_-auto-complete [(ngModel)]="example.config" id="config" name="config"></config_-auto-complete>
+    </div>
+</div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    <label for="outputPath">Output Path</label>
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText id="outputPath" [(ngModel)]="example.outputPath" name="outputPath" #outputPath="ngModel"/>
+                </div>
+            </div>
+        </div>
+
+        </md-card-content>
+        <md-card-actions>
+            <button md-raised-button (click)="search(dt)"><md-icon>search</md-icon>Search</button>
+        </md-card-actions>
+    </md-card>
+
+    <md-card>
+    <md-card-content>
+    <p>The list of results below is server-side paginated...</p>
+
+    <p-dataTable #dt [value]="currentPage.content"
+                 [lazy]="true"
+                 [rows]="10"
+                 [paginator]="currentPage.totalElements > 10"
+                 [totalRecords]="currentPage.totalElements"
+                 (onLazyLoad)="loadPage($event)"
+                 selectionMode="single"
+                 (onRowSelect)="onRowSelect($event)"
+                 [rowsPerPageOptions]="[5,10,20,50,100]"
+                 [responsive]="true">
+        <p-header>{{header}} (count: {{currentPage.totalElements}})</p-header>
+        <p-column field="outputPath" header="Output Path" sortable="true">
+        </p-column>
+        <p-column styleClass="col-icon">
+            <ng-template let-artifact="rowData" pTemplate="body">
+                <button type="button" pButton icon="fa-trash" (click)="showDeleteDialog(artifact)" style="float:left"></button>
+            </ng-template>
+        </p-column>
+    </p-dataTable>
+    </md-card-content>
+    <md-card-actions>
+        <button md-raised-button (click)="addNew()"><md-icon>add</md-icon>Add</button>
+    </md-card-actions>
+    </md-card>
+</div>

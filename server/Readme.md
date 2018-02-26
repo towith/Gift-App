@@ -16,3 +16,9 @@ npm install --save @angular/material@2.0.0-beta.6
 npm install --save primeng@4.1.0-rc.2
 npm install --save font-awesome
 ng serve --proxy-config proxy.conf.json
+
+
+# gen source for postgres
+- mvn -Pdb,metadata generate-sources
+- ::.*?[a-z ]*}
+- mvn -Pgen generate-sources

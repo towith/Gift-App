@@ -64,6 +64,7 @@ import {User_DetailComponent} from './entities/user_/user_-detail.component';
 import {User_LineComponent} from './entities/user_/user_-line.component';
 import {User_CompleteComponent} from './entities/user_/user_-auto-complete.component';
 import {BenchComponent} from './bench/bench/bench.component';
+import {App_Service} from "./entities/app_/app_.service";
 
 @NgModule({
     declarations: [
@@ -129,6 +130,7 @@ import {BenchComponent} from './bench/bench/bench.component';
         PassportService,
         RoleService,
         User_Service,
+        App_Service,
 
 // our application services
         AuthService,

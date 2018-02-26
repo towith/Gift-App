@@ -26,8 +26,8 @@ import {MessageService} from './service/message.service';
 		<p-growl [value]="msgs"></p-growl>
 
 		<div class="ui-g layout">
-			<div class="ui-g-12 ui-md-1">The West...</div>
-			<div class="ui-g-12 ui-md-11 ui-g-nopad">
+			<!--<div class="ui-g-12 ui-md-1">The West...</div>-->
+			<div class="ui-g-12 ui-md-12 ui-g-nopad">
 				<div class="ui-g-12 ui-g-nopad" style="font-size: 14px;">
 					<p-menubar [model]="items"></p-menubar>
 				</div>

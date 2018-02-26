@@ -4,9 +4,27 @@
 
 		</p-dataList>
 	</div>
-	<div class="ui-g-12 ui-md-1 ui-g-nopad">
-		<p-dataGrid>
-
-		</p-dataGrid>
+	<div class="ui-g-12 ui-md-11 ui-g-nopad">
+		<md-card>
+			<md-card-content>
+				<p>The list of results below is server-side paginated...</p>
+				<p-dataTable #dt [value]="currentPage.content" [lazy]="true" [rows]="10" [paginator]="currentPage.totalElements > 10" [totalRecords]="currentPage.totalElements" (onLazyLoad)="loadPage($event)" selectionMode="single" (onRowSelect)="onRowSelect($event)" [rowsPerPageOptions]="[5,10,20,50,100]" [responsive]="true">
+					<p-header>{{header}} (count: {{currentPage.totalElements}})</p-header>
+					<p-column field="category_" header="Category " sortable="true"></p-column>
+					<p-column field="templatePath" header="Template Path" sortable="true"></p-column>
+					<p-column styleClass="col-icon">
+						<ng-template let-app_="rowData" pTemplate="body">
+							<button type="button" pButton icon="fa-trash" (click)="showDeleteDialog(app_)" style="float:left"></button>
+						</ng-template>
+					</p-column>
+				</p-dataTable>
+			</md-card-content>
+			<md-card-actions>
+				<button md-raised-button (click)="addNew()">
+					<md-icon>add</md-icon>
+					Add
+				</button>
+			</md-card-actions>
+		</md-card>
 	</div>
 </div>

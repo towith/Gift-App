@@ -96,7 +96,7 @@ export class AppWidgetService {
         debugger;
         let body = JSON.stringify(appWidgets);
         return this.http.post('/api/appWidgets/saveConfigAndGenApp', body, this.options)
-            .map(response => AppWidget.toArray(response.json()))
+            .map(response => response.json())
             .catch(this.handleError);
     }
 }

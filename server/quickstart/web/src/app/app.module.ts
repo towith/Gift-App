@@ -65,6 +65,15 @@ import {User_LineComponent} from './entities/user_/user_-line.component';
 import {User_CompleteComponent} from './entities/user_/user_-auto-complete.component';
 import {BenchComponent} from './bench/bench/bench.component';
 import {App_Service} from "./entities/app_/app_.service";
+import {App_DetailComponent} from "./entities/app_/app_-detail.component";
+import {AppWidgetListComponent} from "./entities/appWidget/appWidget-list.component";
+import {AppWidgetDetailComponent} from "./entities/appWidget/appWidget-detail.component";
+import {App_CompleteComponent} from "./entities/app_/app_-auto-complete.component";
+import {App_LineComponent} from "./entities/app_/app_-line.component";
+import {App_ListComponent} from "./entities/app_/app_-list.component";
+import {AppWidgetLineComponent} from "./entities/appWidget/appWidget-line.component";
+import {AppWidgetCompleteComponent} from "./entities/appWidget/appWidget-auto-complete.component";
+import {AppWidgetService} from "./entities/appWidget/appWidget.service";
 
 @NgModule({
     declarations: [
@@ -87,7 +96,15 @@ import {App_Service} from "./entities/app_/app_.service";
         User_DetailComponent,
         User_LineComponent,
         User_CompleteComponent,
-        BenchComponent
+        BenchComponent,
+        App_CompleteComponent,
+        App_LineComponent,
+        App_DetailComponent,
+        App_ListComponent,
+        AppWidgetListComponent,
+        AppWidgetDetailComponent,
+        AppWidgetLineComponent,
+        AppWidgetCompleteComponent
     ],
     imports: [
 // angular
@@ -135,6 +152,7 @@ import {App_Service} from "./entities/app_/app_.service";
 // our application services
         AuthService,
         MessageService,
+        AppWidgetService,
 
 // primeng service
         ConfirmationService

@@ -1,12 +1,9 @@
 package com.willbe.giftapp.appPipe.obj
 
-import com.jaxio.celerio.output.FileUtil
-import org.apache.tomcat.util.http.fileupload.FileUtils
-import org.springframework.util.FileCopyUtils
+import com.willbe.giftapp.Constant
 import org.springframework.util.FileSystemUtils
 import java.io.File
 import java.io.IOException
-import java.nio.file.Files
 
 class PrepareHandler : Handler {
     @Throws(IOException::class)
@@ -18,6 +15,6 @@ class PrepareHandler : Handler {
     private fun copyWorkSpace(context: Context) {
         var outputDir = File(context.outputPath!!)
         outputDir.deleteRecursively();
-        FileSystemUtils.copyRecursively(File(Conversion.templateDir), outputDir)
+        FileSystemUtils.copyRecursively(File(Constant.templateRepoDir), outputDir)
     }
 }

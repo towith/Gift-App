@@ -22,19 +22,22 @@ import {RoleDetailComponent} from './entities/role/role-detail.component';
 import {User_ListComponent} from './entities/user_/user_-list.component';
 import {User_DetailComponent} from './entities/user_/user_-detail.component';
 import {BenchComponent} from "./bench/bench/bench.component";
+import {App_DetailComponent} from "./entities/app_/app_-detail.component";
 
 export const routes: Routes = [
-    { path : '',  component: HomeComponent }
+    {path: '', component: HomeComponent}
     ,
-    {path: 'passport-list', component: PassportListComponent },
-    {path: 'passport/:id', component: PassportDetailComponent }
+    {path: 'passport-list', component: PassportListComponent},
+    {path: 'passport/:id', component: PassportDetailComponent}
     ,
-    {path: 'role-list', component: RoleListComponent },
-    {path: 'role/:id', component: RoleDetailComponent }
+    {path: 'role-list', component: RoleListComponent},
+    {path: 'role/:id', component: RoleDetailComponent}
     ,
-    {path: 'user_-list', component: User_ListComponent },
-    {path: 'user_/:id', component: User_DetailComponent },
-    {path: 'bench/:id', component: BenchComponent },
+    {path: 'user_-list', component: User_ListComponent},
+    {path: 'user_/:id', component: User_DetailComponent},
+    {path: 'bench/:id', component: BenchComponent},
+    {path: 'app_/:id', component: App_DetailComponent},
+
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

@@ -123,6 +123,9 @@ export class WidgetConfigComponent {
 
     saveAndGenApp(appWidgets: AppWidget[]) {
         debugger;
-        this.appWidgetService.saveConfigAndGenApp(appWidgets);
+        this.appWidgetService.saveConfigAndGenApp(appWidgets).subscribe(
+            pageResponse => this.currentPage = pageResponse,
+            error => this.messageService.error('Could not get the results', error)
+        );;
     }
 }

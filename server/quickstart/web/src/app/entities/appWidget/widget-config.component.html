@@ -1,0 +1,53 @@
+<div class="ContentSideSections Implementation">
+	<md-card *ngIf="!sub">
+		<md-card-title>Search AppWidget with search criterias</md-card-title>
+		<md-card-content>
+			<div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" ngForm #appWidgetForm="ngForm">
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-2">
+						<label for="app">App</label>
+					</div>
+					<div class="ui-grid-col-6">
+						<app_-auto-complete [(ngModel)]="example.app" id="app" name="app"></app_-auto-complete>
+					</div>
+				</div>
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-2">
+						<label for="rule">Rule</label>
+					</div>
+					<div class="ui-grid-col-6">
+						<input pInputText id="rule" [(ngModel)]="example.rule" name="rule" #rule="ngModel"/>
+					</div>
+				</div>
+			</div>
+
+		</md-card-content>
+		<md-card-actions>
+			<button md-raised-button (click)="search(dt)">
+				<md-icon>search</md-icon>
+				Search
+			</button>
+		</md-card-actions>
+	</md-card>
+
+	<md-card>
+		<md-card-content>
+			<p-dataTable #dt [value]="currentPage.content" [lazy]="true" [paginator]="false" [responsive]="true">
+				<p-column styleClass="col-icon">
+					<ng-template let-appWidget="rowData" pTemplate="body">
+						<div *ngIf="appWidget.ruleObj['type']==1" class="input">
+							<label>{{appWidget.ruleObj.label}}</label>
+							<input pInputText [(ngModel)]="appWidget.inputValue" name="inputValue" #inputValue="ngModel"/>
+						</div>
+					</ng-template>
+				</p-column>
+			</p-dataTable>
+		</md-card-content>
+		<md-card-actions>
+			<button md-raised-button (click)="saveAndGenApp(currentPage.content)">
+				<md-icon>save</md-icon>
+				SaveAndGen
+			</button>
+		</md-card-actions>
+	</md-card>
+</div>

@@ -91,4 +91,12 @@ export class AppWidgetService {
         }
         return Observable.throw(errMsg);
     }
+
+    saveConfigAndGenApp(appWidgets: AppWidget[]) {
+        debugger;
+        let body = JSON.stringify(appWidgets);
+        return this.http.post('/api/appWidgets/saveConfigAndGenApp', body, this.options)
+            .map(response => AppWidget.toArray(response.json()))
+            .catch(this.handleError);
+    }
 }

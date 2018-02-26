@@ -1,41 +1,39 @@
 <div class="ContentSideSections Implementation">
-    <md-card *ngIf="app_" ngForm #app_Form="ngForm">
-        <md-card-title>App_ Details</md-card-title>
-        <md-card-content>
-        <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
-             <div class="ui-grid-row">
-                <div class="ui-grid-col-2"><label for="category_">Category  </label></div>
-                <div class="ui-grid-col-6">
-                    <input pInputText id="category_" [(ngModel)]="app_.category_"   name="category_" #category_="ngModel"/>
-                </div>
-                <div class="ui-grid-col-4">
-                </div>
-            </div>
-             <div class="ui-grid-row">
-                <div class="ui-grid-col-2"><label for="templatePath">Template Path </label></div>
-                <div class="ui-grid-col-6">
-                    <textarea pInputTextarea id="templatePath" [(ngModel)]="app_.templatePath" autoResize="true" name="templatePath" #templatePath="ngModel"></textarea>
-                </div>
-                <div class="ui-grid-col-4">
-                </div>
-            </div>
-         </div>
-        </md-card-content>
-        <md-card-actions>
-            <button md-raised-button *ngIf="sub" (click)="onCancel()"><md-icon>cancel</md-icon>Cancel</button>
-            <button md-raised-button (click)="onSave()" [disabled]="!app_Form.form.valid"><md-icon>save</md-icon>Save</button>
-        </md-card-actions>
-    </md-card>
-    <md-card *ngIf="app_ && app_.id">
-    <md-card-subtitle>App_ db relations</md-card-subtitle>
-    <md-card-content>
-    <md-tab-group>
-        <md-tab label="AppWidgets">
-            <appWidget-list *ngIf="showAppWidgets" [app]="app_" sub="true" [header]="'AppWidgets of this app_'" (onAddNewClicked)="showAppWidgets = false"></appWidget-list>
-            <appWidget-detail *ngIf="!showAppWidgets" [app]="app_" sub="true" (onSaveClicked)="showAppWidgets = true" (onCancelClicked)="showAppWidgets = true"></appWidget-detail>
-        </md-tab>
-
-    </md-tab-group>
-    </md-card-content>
-    </md-card>
+	<md-card *ngIf="app_" ngForm #app_Form="ngForm">
+		<md-card-title>App_ Details</md-card-title>
+		<md-card-content>
+			<div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-2"><label for="category_">Category </label></div>
+					<div class="ui-grid-col-6">
+						<input pInputText id="category_" [(ngModel)]="app_.category_" name="category_" #category_="ngModel"/>
+					</div>
+					<div class="ui-grid-col-4"></div>
+				</div>
+				<div class="ui-grid-row">
+					<div class="ui-grid-col-2"><label for="templatePath">Template Path </label></div>
+					<div class="ui-grid-col-6">
+						<textarea pInputTextarea id="templatePath" [(ngModel)]="app_.templatePath" autoResize="true" name="templatePath" #templatePath="ngModel"></textarea>
+					</div>
+					<div class="ui-grid-col-4"></div>
+				</div>
+			</div>
+		</md-card-content>
+		<md-card-actions>
+			<button md-raised-button *ngIf="sub" (click)="onCancel()">
+				<md-icon>cancel</md-icon>
+				Cancel
+			</button>
+			<button md-raised-button (click)="onSave()" [disabled]="!app_Form.form.valid">
+				<md-icon>save</md-icon>
+				Save
+			</button>
+		</md-card-actions>
+	</md-card>
+	<md-card *ngIf="app_ && app_.id">
+		<md-card-subtitle>App_ db relations</md-card-subtitle>
+		<md-card-content>
+			<widget-config *ngIf="showAppWidgets" [app]="app_" sub="true" [header]="'AppWidgets of this app_'" (onAddNewClicked)="showAppWidgets = false"></widget-config>
+		</md-card-content>
+	</md-card>
 </div>

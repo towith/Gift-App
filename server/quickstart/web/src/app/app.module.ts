@@ -63,7 +63,7 @@ import {User_ListComponent} from './entities/user_/user_-list.component';
 import {User_DetailComponent} from './entities/user_/user_-detail.component';
 import {User_LineComponent} from './entities/user_/user_-line.component';
 import {User_CompleteComponent} from './entities/user_/user_-auto-complete.component';
-import {BenchComponent} from './bench/bench/bench.component';
+import {BenchComponent} from './entities/bench/bench.component';
 import {App_Service} from "./entities/app_/app_.service";
 import {App_DetailComponent} from "./entities/app_/app_-detail.component";
 import {AppWidgetListComponent} from "./entities/appWidget/appWidget-list.component";
@@ -74,6 +74,7 @@ import {App_ListComponent} from "./entities/app_/app_-list.component";
 import {AppWidgetLineComponent} from "./entities/appWidget/appWidget-line.component";
 import {AppWidgetCompleteComponent} from "./entities/appWidget/appWidget-auto-complete.component";
 import {AppWidgetService} from "./entities/appWidget/appWidget.service";
+import {WidgetConfigComponent} from "./entities/appWidget/widget-config.component";
 
 @NgModule({
     declarations: [
@@ -104,7 +105,8 @@ import {AppWidgetService} from "./entities/appWidget/appWidget.service";
         AppWidgetListComponent,
         AppWidgetDetailComponent,
         AppWidgetLineComponent,
-        AppWidgetCompleteComponent
+        AppWidgetCompleteComponent,
+        WidgetConfigComponent
     ],
     imports: [
 // angular

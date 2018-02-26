@@ -21,7 +21,7 @@ import {RoleDetailComponent} from './entities/role/role-detail.component';
 
 import {User_ListComponent} from './entities/user_/user_-list.component';
 import {User_DetailComponent} from './entities/user_/user_-detail.component';
-import {BenchComponent} from "./bench/bench/bench.component";
+import {BenchComponent} from "./entities/bench/bench.component";
 import {App_DetailComponent} from "./entities/app_/app_-detail.component";
 
 export const routes: Routes = [

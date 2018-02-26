@@ -58,8 +58,7 @@ public class AppWidgetDTOService {
 
         if (appWidget != null) {
             ExampleMatcher matcher = ExampleMatcher.matching() //
-                    .withMatcher(AppWidget_.rule.getName(), match -> match.ignoreCase().startsWith())
-                    .withMatcher(AppWidget_.userInterface.getName(), match -> match.ignoreCase().startsWith());
+                    .withMatcher(AppWidget_.rule.getName(), match -> match.ignoreCase().startsWith());
 
             example = Example.of(appWidget, matcher);
         }
@@ -100,7 +99,6 @@ public class AppWidgetDTOService {
 
         appWidget.setRule(dto.rule);
 
-        appWidget.setUserInterface(dto.userInterface);
 
         if (dto.app == null) {
             appWidget.setApp(null);
@@ -139,7 +137,6 @@ public class AppWidgetDTOService {
 
         dto.id = appWidget.getId();
         dto.rule = appWidget.getRule();
-        dto.userInterface = appWidget.getUserInterface();
         if (depth-- > 0) {
             dto.app = app_DTOService.toDTO(appWidget.getApp(), depth);
         }
@@ -168,7 +165,6 @@ public class AppWidgetDTOService {
 
         appWidget.setId(dto.id);
         appWidget.setRule(dto.rule);
-        appWidget.setUserInterface(dto.userInterface);
         if (depth-- > 0) {
             appWidget.setApp(app_DTOService.toEntity(dto.app, depth));
         }

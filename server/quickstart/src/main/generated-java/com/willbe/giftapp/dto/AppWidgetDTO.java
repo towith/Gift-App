@@ -18,7 +18,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class AppWidgetDTO {
     public Integer id;
     public String rule;
-    public String userInterface;
     public App_DTO app;
 
     @JsonIgnore

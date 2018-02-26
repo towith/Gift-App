@@ -19,7 +19,6 @@ public abstract class AppWidget_ {
     // Raw attributes
     public static volatile SingularAttribute<AppWidget, Integer> id;
     public static volatile SingularAttribute<AppWidget, String> rule;
-    public static volatile SingularAttribute<AppWidget, String> userInterface;
 
     // Many to one
     public static volatile SingularAttribute<AppWidget, App_> app;

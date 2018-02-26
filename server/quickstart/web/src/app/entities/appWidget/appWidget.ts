@@ -12,18 +12,19 @@ import {App_} from '../app_/app_';
 
 export class AppWidget {
     // Raw attributes
-    id : number;
-    rule : string;
-    userInterface : string;
+    id: number;
+    rule: string;
     // x-to-one
-    app : App_;
+    app: App_;
+    ruleObj: JSON;
+    inputValue:string;
 
 
-    constructor(json? : any) {
+    constructor(json?: any) {
         if (json != null) {
             this.id = json.id;
             this.rule = json.rule;
-            this.userInterface = json.userInterface;
+            this.ruleObj = eval('(' + this.rule + ')');
 
             if (json.app != null) {
                 this.app = new App_(json.app);
@@ -33,8 +34,8 @@ export class AppWidget {
 
     // Utils
 
-    static toArray(jsons : any[]) : AppWidget[] {
-        let appWidgets : AppWidget[] = [];
+    static toArray(jsons: any[]): AppWidget[] {
+        let appWidgets: AppWidget[] = [];
         if (jsons != null) {
             for (let json of jsons) {
                 appWidgets.push(new AppWidget(json));

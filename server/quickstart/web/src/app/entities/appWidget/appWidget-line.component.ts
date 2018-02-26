@@ -13,7 +13,7 @@ import {AppWidget} from './appWidget';
 
 @Component({
 	template: `
-        {{ appWidget?.rule }} {{ appWidget?.userInterface }} 	`,
+        {{ appWidget?.rule }} `,
 	selector: 'appWidget-line',
 })
 export class AppWidgetLineComponent {

@@ -19,6 +19,8 @@ public class AppWidgetDTO {
     public Integer id;
     public String rule;
     public App_DTO app;
+    public String inputValue;
+    public int type;
 
     @JsonIgnore
     public boolean isIdSet() {

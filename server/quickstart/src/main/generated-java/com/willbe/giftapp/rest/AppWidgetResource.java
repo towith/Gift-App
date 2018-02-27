@@ -12,12 +12,14 @@ package com.willbe.giftapp.rest;
 
 import com.willbe.giftapp.dto.AppWidgetDTO;
 import com.willbe.giftapp.dto.AppWidgetDTOService;
+import com.willbe.giftapp.dto.PipeLineService;
 import com.willbe.giftapp.dto.support.PageRequestByExample;
 import com.willbe.giftapp.dto.support.PageResponse;
 import com.willbe.giftapp.repository.AppWidgetRepository;
 import com.willbe.giftapp.rest.support.AutoCompleteQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,10 +50,18 @@ public class AppWidgetResource {
     private AppWidgetRepository appWidgetRepository;
     @Inject
     private AppWidgetDTOService appWidgetDTOService;
+    @Autowired
+    private PipeLineService pipeLineService;
 
     @RequestMapping(value = "/saveConfigAndGenApp", method = POST)
     public ResponseEntity saveConfigAndGenApp(@RequestBody List<AppWidgetDTO> appWidgetDTOS) {
-        return ResponseEntity.ok().body(true);
+        try {
+            pipeLineService.call(appWidgetDTOS);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body(false);
+        }
+        return ResponseEntity.ok(true);
     }
 
     /**

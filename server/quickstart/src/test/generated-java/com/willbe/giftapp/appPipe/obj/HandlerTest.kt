@@ -6,8 +6,7 @@ open class HandlerTest() {
     var context: Context
 
     init {
-        context = Context("testdirxx")
-        context.replacement = "gift from haven"
+        context = Context("testdirxx","testdirxx")
         setContext(context)
     }
 }

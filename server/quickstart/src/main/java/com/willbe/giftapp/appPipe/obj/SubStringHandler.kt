@@ -1,23 +1,32 @@
 package com.willbe.giftapp.appPipe.obj
 
 import com.willbe.giftapp.appPipe.getContext
+import com.willbe.giftapp.libxx.procCall
+import org.apache.commons.lang.SystemUtils
 
-class SubStringHandler : Handler {
+class SubStringHandler(widgetConfig: WidgetConfig) : Handler {
+    var widgetConfig: SubStringConfig = widgetConfig as SubStringConfig
 
-    var ruleList: List<HandleRule>? = null
-
-    init {
-        ruleList = mutableListOf(HandleRuleAppName())
-    }
 
     override fun doHandle(context: Context) {
-        for (handleRule in ruleList!!) {
-            walkRule(handleRule, getContext().get().replacement)
-        }
+        apply(widgetConfig.inputValue, context)
     }
 
-    private fun walkRule(handleRule: HandleRule, replacement: String) {
-        handleRule.apply(replacement, getContext().get())
+
+    fun apply(replacement: String, context: Context) {
+        var targetFile =widgetConfig.placeHolder
+        replace(targetFile, widgetConfig.placeHolder, replacement)
+    }
+
+    private fun replace(targetFile: String, token: String, replacement: String) {
+        var command: Array<String>
+        var iS_OS_WINDOWS = SystemUtils.IS_OS_WINDOWS
+        if (iS_OS_WINDOWS) {
+            command = arrayOf("u", "sed", "-i", "'s*${token}*${replacement}*'", targetFile)
+        } else {
+            command = arrayOf("sed", "-i", "'s*${token}*${replacement}*'", targetFile)
+        }
+        procCall(command, iS_OS_WINDOWS, getContext().get().workingDir)
     }
 
 }

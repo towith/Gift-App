@@ -2,6 +2,7 @@ package com.willbe.giftapp
 
 object Constant {
     val templateRepoDir = "D:\\my\\lab\\giftapp\\sample"
+    val artifactRepoDir = "D:\\my\\lab\\giftapp\\artifact"
 }
 
 enum class Category(value: kotlin.Int) {
@@ -9,6 +10,8 @@ enum class Category(value: kotlin.Int) {
 }
 
 enum class WidgetType(value: Int) {
-    placeHolderText(1)
+    placeHolderText(1);
+
+    val value: Int = value;
 }
 

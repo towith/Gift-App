@@ -9,6 +9,8 @@ $$
 LANGUAGE plpgsql;
 
 INSERT INTO app_ (category_, template_path) VALUES (category_val('test'), 'test');
-INSERT INTO app_widget (app_id, rule) VALUES (1, '{type:1,placeHolder:"#__APP_NAME__#",label:"app名称"}');
-DELETE from app_widget where app_id=1;
-commit;
+INSERT INTO app_widget (app_id, rule)
+VALUES (1, '{type:1,placeHolder:"#__APP_NAME__#",targetFile:"app/src/main/res/values/strings.xml","label:"app名称"}');
+DELETE FROM app_widget
+WHERE app_id = 1;
+COMMIT;

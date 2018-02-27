@@ -54,7 +54,7 @@ public class AppWidgetResource {
     private PipeLineService pipeLineService;
 
     @RequestMapping(value = "/saveConfigAndGenApp", method = POST)
-    public ResponseEntity saveConfigAndGenApp(@RequestBody List<AppWidgetDTO> appWidgetDTOS) {
+    public ResponseEntity<Boolean> saveConfigAndGenApp(@RequestBody List<AppWidgetDTO> appWidgetDTOS) {
         try {
             pipeLineService.call(appWidgetDTOS);
         } catch (Exception e) {

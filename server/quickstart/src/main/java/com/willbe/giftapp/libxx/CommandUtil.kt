@@ -34,7 +34,9 @@ class CommandUtil {
             p.waitFor()
             var exitValue = p.exitValue()
             if (exitValue != 0) {
-                var error = Error(" call failed:[" + exitValue + "]")
+                var error = Error(" call failed:[" + exitValue + "] on [" +
+                        workingDir +
+                        "]")
                 error.printStackTrace()
                 throw error
             }

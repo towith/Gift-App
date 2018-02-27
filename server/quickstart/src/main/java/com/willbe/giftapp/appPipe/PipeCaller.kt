@@ -43,6 +43,7 @@ class PipeCaller(app: App_DTO, widgetsConfig: List<AppWidgetDTO>) {
     fun call() {
         var uuid: String = UUID.randomUUID().toString()
         var context = Context(uuid, uuid)
+        context.app=app
         setContext(context)
 
         for (handler in handlers) {

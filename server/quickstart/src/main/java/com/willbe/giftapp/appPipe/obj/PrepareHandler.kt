@@ -15,6 +15,17 @@ class PrepareHandler : Handler {
     private fun copyWorkSpace(context: Context) {
         var outputDir = File(context.outputPath!!)
         outputDir.deleteRecursively();
-        FileSystemUtils.copyRecursively(File(Constant.templateRepoDir), outputDir)
+        outputDir.mkdir()
+
+        var file = File(Constant.templateRepoDir + File.separator + context.app.templatePath)
+        if (file.isDirectory) {
+
+        } else {
+            throw RuntimeException("Template is not directory")
+        }
+        var list = file.listFiles()
+        list.forEach() {
+            FileSystemUtils.copyRecursively(it, File(outputDir.absolutePath + File.separator + it.name))
+        }
     }
 }

@@ -1,9 +1,11 @@
 package com.willbe.giftapp.appPipe
 
+import com.willbe.giftapp.Constant
 import com.willbe.giftapp.WidgetType
 import com.willbe.giftapp.appPipe.obj.*
 import com.willbe.giftapp.dto.AppWidgetDTO
 import com.willbe.giftapp.dto.App_DTO
+import java.io.File
 import java.io.IOException
 import java.util.*
 
@@ -44,7 +46,8 @@ class PipeCaller(app: App_DTO, widgetsConfig: List<AppWidgetDTO>) {
     @Throws(IOException::class)
     fun call() {
         var uuid: String = UUID.randomUUID().toString()
-        var context = Context(uuid, uuid)
+        var outputPath = Constant.artifactRepoDir + File.separator + uuid
+        var context = Context(outputPath, outputPath)
         context.app = app
         context.appWidgetDTOList = widgetsConfig
         setContext(context)

@@ -1,0 +1,1 @@
+# [later] retrieve widget config info from db , but not from frontend passing

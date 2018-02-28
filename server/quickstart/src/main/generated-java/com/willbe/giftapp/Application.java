@@ -10,6 +10,9 @@
  */
 package com.willbe.giftapp;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
@@ -18,19 +21,22 @@ import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+
+import javax.annotation.PostConstruct;
 
 @SpringBootApplication
 public class Application
 //        implements CommandLineRunner
 {
     public static ApplicationContext applicationContext;
-//    @Autowired
-//    private ApplicationContext appContext;
+    @Autowired
+    private ApplicationContext appContext;
 
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
-        Application.applicationContext = applicationContext;
+//        Application.applicationContext = applicationContext;
     }
 
     @Bean
@@ -47,6 +53,10 @@ public class Application
 //        }
 //    }
 
+    @PostConstruct
+    private void init() {
+        Application.applicationContext = appContext;
+    }
 
     // http://stackoverflow.com/questions/36761019/how-can-i-use-angular2-pathlocationstrategy-in-a-spring-boot-application
     private static class Angular2PathLocationStrategyCustomizer implements EmbeddedServletContainerCustomizer {
@@ -55,4 +65,24 @@ public class Application
             container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/"));
         }
     }
+
+    @Configuration
+    public static class BeanPostProcessorConfiguration {
+        @Bean
+        public BeanPostProcessor beanPostProcessor() {
+            return new BeanPostProcessor() {
+                @Override
+                public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+                    return bean;
+                }
+
+                @Override
+                public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+                    return bean;
+                }
+            };
+        }
+    }
+
+
 }

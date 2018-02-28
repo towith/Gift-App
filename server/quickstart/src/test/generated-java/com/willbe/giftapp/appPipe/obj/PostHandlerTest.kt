@@ -7,6 +7,7 @@ import org.junit.Test
 
 class PostHandlerTest : BaseTest() {
 
+
     @Test
     fun setApplicationContext() {
         assertNotNull(Application.applicationContext)

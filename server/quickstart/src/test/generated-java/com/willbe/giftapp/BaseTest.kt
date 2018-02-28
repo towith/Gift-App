@@ -23,4 +23,5 @@ import org.springframework.test.context.web.WebAppConfiguration
 //@ComponentScan(basePackages = arrayOf("com.willbe.giftapp"))
 //@ContextConfiguration(classes = arrayOf(TestConfig::class))
 open class BaseTest {
+
 }

@@ -8,7 +8,7 @@
   </jdbcConnectivity>
   <databaseInfo databaseMajorVersion="9" databaseMinorVersion="5" databaseProductName="PostgreSQL" databaseProductVersion="9.5.10" driverMajorVersion="42" driverMinorVersion="2" driverName="PostgreSQL JDBC Driver" driverVersion="42.2.1" extraInfo=""/>
   <tables>
-    <table name="app_" type="TABLE" schemaName="public">
+    <table name="app_" type="TABLE">
       <columns>
         <column name="id" columnDef="nextval('app_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
         <column name="category_" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="2" size="50" type="VARCHAR"/>
@@ -22,24 +22,24 @@
         <primaryKey>id</primaryKey>
       </primaryKeys>
     </table>
-    <table name="app_widget" type="TABLE" schemaName="public">
+    <table name="app_widget" type="TABLE">
       <columns>
         <column name="id" columnDef="nextval('app_widget_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
         <column name="app_id" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="10" type="INTEGER"/>
-        <column name="rule" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="3" size="4000" type="VARCHAR"/>
-        <column name="user_interface" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="4" size="4000" type="VARCHAR"/>
+        <column name="type" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="3" size="10" type="INTEGER"/>
+        <column name="rule" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="4" size="4000" type="VARCHAR"/>
       </columns>
       <indexes>
         <indexe columnName="id" indexName="app_widget_pkey" nonUnique="false"/>
       </indexes>
       <importedKeys>
-        <importedKey fkColumnName="app_id" fkName="app_widget_app_id_fkey" pkColumnName="id" pkTableName="app_" pkTableSchema="public"/>
+        <importedKey fkColumnName="app_id" fkName="app_widget_app_id_fkey" pkColumnName="id" pkTableName="app_"/>
       </importedKeys>
       <primaryKeys>
         <primaryKey>id</primaryKey>
       </primaryKeys>
     </table>
-    <table name="artifact" type="TABLE" schemaName="public">
+    <table name="artifact" type="TABLE">
       <columns>
         <column name="id" columnDef="nextval('artifact_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
         <column name="app_id" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="10" type="INTEGER"/>
@@ -51,15 +51,15 @@
         <indexe columnName="id" indexName="artifact_pkey" nonUnique="false"/>
       </indexes>
       <importedKeys>
-        <importedKey fkColumnName="app_id" fkName="artifact_app_id_fkey" pkColumnName="id" pkTableName="app_" pkTableSchema="public"/>
-        <importedKey fkColumnName="config_id" fkName="artifact_config_id_fkey" pkColumnName="id" pkTableName="config_" pkTableSchema="public"/>
-        <importedKey fkColumnName="user_id" fkName="artifact_user_id_fkey" pkColumnName="id" pkTableName="user_" pkTableSchema="public"/>
+        <importedKey fkColumnName="app_id" fkName="artifact_app_id_fkey" pkColumnName="id" pkTableName="app_"/>
+        <importedKey fkColumnName="config_id" fkName="artifact_config_id_fkey" pkColumnName="id" pkTableName="config_"/>
+        <importedKey fkColumnName="user_id" fkName="artifact_user_id_fkey" pkColumnName="id" pkTableName="user_"/>
       </importedKeys>
       <primaryKeys>
         <primaryKey>id</primaryKey>
       </primaryKeys>
     </table>
-    <table name="config_" type="TABLE" schemaName="public">
+    <table name="config_" type="TABLE">
       <columns>
         <column name="id" columnDef="nextval('config_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
         <column name="app_id" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="10" type="INTEGER"/>
@@ -70,14 +70,14 @@
         <indexe columnName="id" indexName="config__pkey" nonUnique="false"/>
       </indexes>
       <importedKeys>
-        <importedKey fkColumnName="app_id" fkName="config__app_id_fkey" pkColumnName="id" pkTableName="app_" pkTableSchema="public"/>
-        <importedKey fkColumnName="user_id" fkName="config__user_id_fkey" pkColumnName="id" pkTableName="user_" pkTableSchema="public"/>
+        <importedKey fkColumnName="app_id" fkName="config__app_id_fkey" pkColumnName="id" pkTableName="app_"/>
+        <importedKey fkColumnName="user_id" fkName="config__user_id_fkey" pkColumnName="id" pkTableName="user_"/>
       </importedKeys>
       <primaryKeys>
         <primaryKey>id</primaryKey>
       </primaryKeys>
     </table>
-    <table name="passport" type="TABLE" schemaName="public">
+    <table name="passport" type="TABLE">
       <columns>
         <column name="id" columnDef="nextval('passport_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
         <column name="passport_number" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="100" type="VARCHAR"/>
@@ -89,13 +89,13 @@
         <indexe columnName="id" indexName="passport_pkey" nonUnique="false"/>
       </indexes>
       <importedKeys>
-        <importedKey fkColumnName="holder_id" fkName="passport_holder_id_fkey" pkColumnName="id" pkTableName="user_" pkTableSchema="public"/>
+        <importedKey fkColumnName="holder_id" fkName="passport_holder_id_fkey" pkColumnName="id" pkTableName="user_"/>
       </importedKeys>
       <primaryKeys>
         <primaryKey>id</primaryKey>
       </primaryKeys>
     </table>
-    <table name="role" type="TABLE" schemaName="public">
+    <table name="role" type="TABLE">
       <columns>
         <column name="id" columnDef="nextval('role_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
         <column name="role_name" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="100" type="VARCHAR"/>
@@ -109,7 +109,7 @@
         <primaryKey>id</primaryKey>
       </primaryKeys>
     </table>
-    <table name="user_" type="TABLE" schemaName="public">
+    <table name="user_" type="TABLE">
       <columns>
         <column name="id" columnDef="nextval('user_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
         <column name="login" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="100" type="VARCHAR"/>
@@ -134,7 +134,7 @@
         <primaryKey>id</primaryKey>
       </primaryKeys>
     </table>
-    <table name="user_role" type="TABLE" schemaName="public">
+    <table name="user_role" type="TABLE">
       <columns>
         <column name="user_id" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
         <column name="role_id" decimalDigits="0" autoIncrement="false" nullable="false" ordinalPosition="2" size="10" type="INTEGER"/>
@@ -144,12 +144,28 @@
         <indexe columnName="role_id" indexName="user_role_pkey" nonUnique="false"/>
       </indexes>
       <importedKeys>
-        <importedKey fkColumnName="role_id" fkName="user_role_role_id_fkey" pkColumnName="id" pkTableName="role" pkTableSchema="public"/>
-        <importedKey fkColumnName="user_id" fkName="user_role_user_id_fkey" pkColumnName="id" pkTableName="user_" pkTableSchema="public"/>
+        <importedKey fkColumnName="role_id" fkName="user_role_role_id_fkey" pkColumnName="id" pkTableName="role"/>
+        <importedKey fkColumnName="user_id" fkName="user_role_user_id_fkey" pkColumnName="id" pkTableName="user_"/>
       </importedKeys>
       <primaryKeys>
         <primaryKey>user_id</primaryKey>
         <primaryKey>role_id</primaryKey>
+      </primaryKeys>
+    </table>
+    <table name="widget_config" type="TABLE">
+      <columns>
+        <column name="id" columnDef="nextval('widget_config_id')" decimalDigits="0" autoIncrement="true" nullable="false" ordinalPosition="1" size="10" type="INTEGER"/>
+        <column name="config_id" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="2" size="10" type="INTEGER"/>
+        <column name="inputvalue" decimalDigits="0" autoIncrement="false" nullable="true" ordinalPosition="3" size="4000" type="VARCHAR"/>
+      </columns>
+      <indexes>
+        <indexe columnName="id" indexName="widget_config_pkey" nonUnique="false"/>
+      </indexes>
+      <importedKeys>
+        <importedKey fkColumnName="config_id" fkName="widget_config_config_id_fkey" pkColumnName="id" pkTableName="config_"/>
+      </importedKeys>
+      <primaryKeys>
+        <primaryKey>id</primaryKey>
       </primaryKeys>
     </table>
   </tables>

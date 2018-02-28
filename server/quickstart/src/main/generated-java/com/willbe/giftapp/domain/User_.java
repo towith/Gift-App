@@ -14,6 +14,9 @@ import com.google.common.base.MoreObjects;
 import com.willbe.giftapp.audit.AuditContextHolder;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
@@ -35,6 +38,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -43,7 +47,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "user_")
-public class User_ implements Identifiable<Integer>, Serializable {
+public class User_ implements Identifiable<Integer>, Serializable, UserDetails {
     private static final long serialVersionUID = 1L;
     private static final Logger log = Logger.getLogger(User_.class.getName());
 
@@ -100,11 +104,6 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public User_ id(Integer id) {
         setId(id);
         return this;
-    }    @NotEmpty
-    @Size(max = 100)
-    @Column(name = "login", nullable = false, length = 100)
-    public String getLogin() {
-        return login;
     }
 
     public User_ login(String login) {
@@ -115,7 +114,6 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public void setLogin(String login) {
         this.login = login;
     }
-    // -- [password] ------------------------
 
     public User_ password(String password) {
         setPassword(password);
@@ -130,15 +128,9 @@ public class User_ implements Identifiable<Integer>, Serializable {
         setEmail(email);
         return this;
     }
-    // -- [email] ------------------------
 
     public void setEmail(String email) {
         this.email = email;
-    }    @Email
-    @Size(max = 100)
-    @Column(name = "email", length = 100)
-    public String getEmail() {
-        return email;
     }
 
     public User_ isEnabled(Boolean isEnabled) {
@@ -149,15 +141,10 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public void setIsEnabled(Boolean isEnabled) {
         this.isEnabled = isEnabled;
     }
-    // -- [isEnabled] ------------------------
 
     public User_ civility(Civility civility) {
         setCivility(civility);
         return this;
-    }    @NotNull
-    @Column(name = "is_enabled", nullable = false, length = 1)
-    public Boolean getIsEnabled() {
-        return isEnabled;
     }
 
     public void setCivility(Civility civility) {
@@ -168,14 +155,14 @@ public class User_ implements Identifiable<Integer>, Serializable {
         setCountryCode(countryCode);
         return this;
     }
-    // -- [civility] ------------------------
 
     public void setCountryCode(CountryCode countryCode) {
         this.countryCode = countryCode;
-    }    @Column(name = "civility", length = 2)
-    @Enumerated(STRING)
-    public Civility getCivility() {
-        return civility;
+    }    @NotEmpty
+    @Size(max = 100)
+    @Column(name = "login", nullable = false, length = 100)
+    public String getLogin() {
+        return login;
     }
 
     public User_ firstName(String firstName) {
@@ -186,15 +173,11 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    // -- [countryCode] ------------------------
+    // -- [password] ------------------------
 
     public User_ lastName(String lastName) {
         setLastName(lastName);
         return this;
-    }    @Column(name = "country_code", length = 6)
-    @Convert(converter = CountryCodeConverter.class)
-    public CountryCode getCountryCode() {
-        return countryCode;
     }
 
     public void setLastName(String lastName) {
@@ -205,14 +188,10 @@ public class User_ implements Identifiable<Integer>, Serializable {
         setCreationDate(creationDate);
         return this;
     }
-    // -- [firstName] ------------------------
+    // -- [email] ------------------------
 
     public void setCreationDate(Instant creationDate) {
         this.creationDate = creationDate;
-    }    @Size(max = 100)
-    @Column(name = "first_name", length = 100)
-    public String getFirstName() {
-        return firstName;
     }
 
     public User_ creationAuthor(String creationAuthor) {
@@ -223,15 +202,10 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public void setCreationAuthor(String creationAuthor) {
         this.creationAuthor = creationAuthor;
     }
-    // -- [lastName] ------------------------
 
     public User_ lastModificationDate(Instant lastModificationDate) {
         setLastModificationDate(lastModificationDate);
         return this;
-    }    @Size(max = 100)
-    @Column(name = "last_name", length = 100)
-    public String getLastName() {
-        return lastName;
     }
 
     public void setLastModificationDate(Instant lastModificationDate) {
@@ -242,13 +216,9 @@ public class User_ implements Identifiable<Integer>, Serializable {
         setLastModificationAuthor(lastModificationAuthor);
         return this;
     }
-    // -- [creationDate] ------------------------
 
     public void setLastModificationAuthor(String lastModificationAuthor) {
         this.lastModificationAuthor = lastModificationAuthor;
-    }    @Column(name = "creation_date", length = 29)
-    public Instant getCreationDate() {
-        return creationDate;
     }
 
     public User_ version(Integer version) {
@@ -259,14 +229,10 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public void setVersion(Integer version) {
         this.version = version;
     }
-    // -- [creationAuthor] ------------------------
 
     public User_ passport(Passport passport) {
         setPassport(passport);
         return this;
-    }    @Column(name = "creation_author", length = 200)
-    public String getCreationAuthor() {
-        return creationAuthor;
     }
 
     public void setPassport(Passport passport) {
@@ -283,7 +249,6 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public boolean addRole(Role role) {
         return getRoles().add(role);
     }
-    // -- [lastModificationDate] ------------------------
 
     /**
      * Returns the {@link #roles} list.
@@ -292,9 +257,11 @@ public class User_ implements Identifiable<Integer>, Serializable {
     @ManyToMany
     public List<Role> getRoles() {
         return roles;
-    }    @Column(name = "last_modification_date", length = 29)
-    public Instant getLastModificationDate() {
-        return lastModificationDate;
+    }    @Email
+    @Size(max = 100)
+    @Column(name = "email", length = 100)
+    public String getEmail() {
+        return email;
     }
 
     /**
@@ -310,7 +277,7 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public boolean containsRole(Role role) {
         return getRoles() != null && getRoles().contains(role);
     }
-    // -- [lastModificationAuthor] ------------------------
+    // -- [isEnabled] ------------------------
 
     /**
      * Apply the default values.
@@ -320,9 +287,6 @@ public class User_ implements Identifiable<Integer>, Serializable {
         setCivility(Civility.MR);
         setCountryCode(CountryCode.FRANCE);
         return this;
-    }    @Column(name = "last_modification_author", length = 200)
-    public String getLastModificationAuthor() {
-        return lastModificationAuthor;
     }
 
     @PrePersist
@@ -341,17 +305,58 @@ public class User_ implements Identifiable<Integer>, Serializable {
             setLastModificationDate(Instant.now());
         }
     }
-    // -- [version] ------------------------
+
+    @Override
+    @Transient
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        org.hibernate.LazyInitializationException: failed to lazily initialize a collection of role: com.willbe.giftapp.domain.User_.roles, could not initialize proxy - no Session
+//        ArrayList<GrantedAuthority> authorities = new ArrayList<>();
+//        if (roles == null) {
+//            return authorities;
+//        }
+//        for (Role role : roles) {
+//            authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+//        }
+        ArrayList<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        return grantedAuthorities;
+    }
 
     @NotEmpty
     @Size(max = 100)
     @Column(name = "\"password\"", nullable = false, length = 100)
     public String getPassword() {
         return password;
-    }    @Column(name = "version", precision = 10)
-    @Version
-    public Integer getVersion() {
-        return version;
+    }
+
+    @Override
+    @Transient
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    @Transient
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    @Transient
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    @Transient
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    @Transient
+    public boolean isEnabled() {
+        return isEnabled;
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -371,14 +376,105 @@ public class User_ implements Identifiable<Integer>, Serializable {
         this.roles = roles;
     }
 
+
+    @NotNull
+    @Column(name = "is_enabled", nullable = false, length = 1)
+    public Boolean getIsEnabled() {
+        return isEnabled;
+    }
+
+
+
+
+    // -- [civility] ------------------------
+
+
+    @Column(name = "civility", length = 2)
+    @Enumerated(STRING)
+    public Civility getCivility() {
+        return civility;
+    }
+
+
+    // -- [countryCode] ------------------------
+
+
+    @Column(name = "country_code", length = 6)
+    @Convert(converter = CountryCodeConverter.class)
+    public CountryCode getCountryCode() {
+        return countryCode;
+    }
+
+
+    // -- [firstName] ------------------------
+
+
+    @Size(max = 100)
+    @Column(name = "first_name", length = 100)
+    public String getFirstName() {
+        return firstName;
+    }
+
+
+    // -- [lastName] ------------------------
+
+
+    @Size(max = 100)
+    @Column(name = "last_name", length = 100)
+    public String getLastName() {
+        return lastName;
+    }
+
+
+    // -- [creationDate] ------------------------
+
+
+    @Column(name = "creation_date", length = 29)
+    public Instant getCreationDate() {
+        return creationDate;
+    }
+
+
+    // -- [creationAuthor] ------------------------
+
+
+    @Column(name = "creation_author", length = 200)
+    public String getCreationAuthor() {
+        return creationAuthor;
+    }
+
+
+    // -- [lastModificationDate] ------------------------
+
+
+    @Column(name = "last_modification_date", length = 29)
+    public Instant getLastModificationDate() {
+        return lastModificationDate;
+    }
+
+
+    // -- [lastModificationAuthor] ------------------------
+
+
+    @Column(name = "last_modification_author", length = 200)
+    public String getLastModificationAuthor() {
+        return lastModificationAuthor;
+    }
+
+
+    // -- [version] ------------------------
+
+
+    @Column(name = "version", precision = 10)
+    @Version
+    public Integer getVersion() {
+        return version;
+    }
+
+
     // -----------------------------------------------------------------
     // One to one
     // -----------------------------------------------------------------
-
-
-
-
-
 
 
     // -----------------------------------------------------------------
@@ -390,17 +486,6 @@ public class User_ implements Identifiable<Integer>, Serializable {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Equals implementation using a business key.
      */
@@ -408,7 +493,6 @@ public class User_ implements Identifiable<Integer>, Serializable {
     public boolean equals(Object other) {
         return this == other || (other instanceof User_ && hashCode() == other.hashCode());
     }
-
 
 
     @Override
@@ -440,8 +524,6 @@ public class User_ implements Identifiable<Integer>, Serializable {
                 .add("version", getVersion()) //
                 .toString();
     }
-
-
 
 
 }

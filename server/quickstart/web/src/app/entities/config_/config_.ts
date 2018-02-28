@@ -14,7 +14,6 @@ import {App_} from '../app_/app_';
 export class Config_ {
     // Raw attributes
     id : number;
-    ruleValue : string;
     // x-to-one
     user : User_;
     app : App_;
@@ -23,7 +22,6 @@ export class Config_ {
     constructor(json? : any) {
         if (json != null) {
             this.id = json.id;
-            this.ruleValue = json.ruleValue;
 
             if (json.user != null) {
                 this.user = new User_(json.user);

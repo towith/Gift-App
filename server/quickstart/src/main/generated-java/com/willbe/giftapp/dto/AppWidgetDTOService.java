@@ -137,6 +137,7 @@ public class AppWidgetDTOService {
 
         dto.id = appWidget.getId();
         dto.rule = appWidget.getRule();
+        dto.type = appWidget.getType();
         if (depth-- > 0) {
             dto.app = app_DTOService.toDTO(appWidget.getApp(), depth);
         }
@@ -151,7 +152,7 @@ public class AppWidgetDTOService {
     public AppWidget toEntity(AppWidgetDTO dto) {
         return toEntity(dto, 1);
     }
-
+     
     /**
      * Converts the passed dto to a AppWidget.
      * Convenient for query by example.
@@ -165,6 +166,7 @@ public class AppWidgetDTOService {
 
         appWidget.setId(dto.id);
         appWidget.setRule(dto.rule);
+        appWidget.setType(dto.type);
         if (depth-- > 0) {
             appWidget.setApp(app_DTOService.toEntity(dto.app, depth));
         }

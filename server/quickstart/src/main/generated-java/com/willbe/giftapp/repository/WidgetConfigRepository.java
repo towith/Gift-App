@@ -10,7 +10,8 @@
  */
 package com.willbe.giftapp.repository;
 
-import com.willbe.giftapp.domain.Config_;
+import com.willbe.giftapp.domain.WidgetConfig;
+import com.willbe.giftapp.domain.WidgetConfig_;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
@@ -19,15 +20,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface Config_Repository extends JpaRepository<Config_, Integer> {
+public interface WidgetConfigRepository extends JpaRepository<WidgetConfig, Integer> {
 
-    default List<Config_> complete(String query, int maxResults) {
-        Config_ probe = new Config_();
+    default List<WidgetConfig> complete(String query, int maxResults) {
+        WidgetConfig probe = new WidgetConfig();
+        probe.setInputvalue(query);
 
         ExampleMatcher matcher = ExampleMatcher.matching() //
-                ;
+                .withMatcher(WidgetConfig_.inputvalue.getName(), match -> match.ignoreCase().startsWith());
 
-        Page<Config_> page = findAll(Example.of(probe, matcher), new PageRequest(0, maxResults));
+        Page<WidgetConfig> page = findAll(Example.of(probe, matcher), new PageRequest(0, maxResults));
         return page.getContent();
     }
 }

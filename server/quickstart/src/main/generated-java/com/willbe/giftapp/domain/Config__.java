@@ -18,7 +18,6 @@ public abstract class Config__ {
 
     // Raw attributes
     public static volatile SingularAttribute<Config_, Integer> id;
-    public static volatile SingularAttribute<Config_, String> ruleValue;
 
     // Many to one
     public static volatile SingularAttribute<Config_, User_> user;

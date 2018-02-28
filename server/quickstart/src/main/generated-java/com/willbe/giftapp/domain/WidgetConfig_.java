@@ -13,14 +13,13 @@ package com.willbe.giftapp.domain;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@StaticMetamodel(AppWidget.class)
-public abstract class AppWidget_ {
+@StaticMetamodel(WidgetConfig.class)
+public abstract class WidgetConfig_ {
 
     // Raw attributes
-    public static volatile SingularAttribute<AppWidget, Integer> id;
-    public static volatile SingularAttribute<AppWidget, Integer> type;
-    public static volatile SingularAttribute<AppWidget, String> rule;
+    public static volatile SingularAttribute<WidgetConfig, Integer> id;
+    public static volatile SingularAttribute<WidgetConfig, String> inputvalue;
 
     // Many to one
-    public static volatile SingularAttribute<AppWidget, App_> app;
+    public static volatile SingularAttribute<WidgetConfig, Config_> config;
 }

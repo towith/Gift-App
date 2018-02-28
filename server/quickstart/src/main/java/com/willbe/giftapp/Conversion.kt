@@ -3,6 +3,8 @@ package com.willbe.giftapp
 object Constant {
     val templateRepoDir = "D:\\my\\lab\\giftapp\\sample"
     val artifactRepoDir = "D:\\my\\lab\\giftapp\\artifact"
+    val apkPath = "app/build/outputs/apk/app-debug.apk"
+
 }
 
 enum class Category(value: kotlin.Int) {

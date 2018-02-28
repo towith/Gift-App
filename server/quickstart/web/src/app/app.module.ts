@@ -75,6 +75,7 @@ import {AppWidgetLineComponent} from "./entities/appWidget/appWidget-line.compon
 import {AppWidgetCompleteComponent} from "./entities/appWidget/appWidget-auto-complete.component";
 import {AppWidgetService} from "./entities/appWidget/appWidget.service";
 import {WidgetConfigComponent} from "./entities/appWidget/widget-config.component";
+import {ToJsonPipe} from './support/to-json.pipe';
 
 @NgModule({
     declarations: [
@@ -106,7 +107,8 @@ import {WidgetConfigComponent} from "./entities/appWidget/widget-config.componen
         AppWidgetDetailComponent,
         AppWidgetLineComponent,
         AppWidgetCompleteComponent,
-        WidgetConfigComponent
+        WidgetConfigComponent,
+        ToJsonPipe
     ],
     imports: [
 // angular

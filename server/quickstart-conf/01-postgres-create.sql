@@ -15,7 +15,7 @@ CREATE TABLE USER_ (
   password                 VARCHAR(100) NOT NULL,
   email                    VARCHAR(100),
   is_enabled               BOOL         NOT NULL DEFAULT TRUE,
-  civility                 CHAR(2)               DEFAULT 'KM',
+  civility                 CHAR(2)               DEFAULT 'MS',
   country_code             VARCHAR(6)            DEFAULT '+33',
   first_name               VARCHAR(100),
   last_name                VARCHAR(100),
@@ -99,10 +99,20 @@ CREATE SEQUENCE CONFIG_ID
   NO MAXVALUE
   START WITH 1;
 CREATE TABLE CONFIG_ (
-  id         INT PRIMARY KEY  DEFAULT nextval('CONFIG_ID'),
-  APP_ID     INT NOT NULL REFERENCES APP_ (id),
-  user_id    INT REFERENCES USER_ (id),
-  RULE_VALUE VARCHAR(4000)
+  id      INT PRIMARY KEY  DEFAULT nextval('CONFIG_ID'),
+  APP_ID  INT NOT NULL REFERENCES APP_ (id),
+  user_id INT REFERENCES USER_ (id)
+);
+--  WIDGET_CONFIG
+CREATE SEQUENCE WIDGET_CONFIG_ID
+  INCREMENT BY 1
+  MINVALUE 1
+  NO MAXVALUE
+  START WITH 1;
+CREATE TABLE WIDGET_CONFIG (
+  id         INT PRIMARY KEY DEFAULT nextval('WIDGET_CONFIG_ID'),
+  config_id  INT REFERENCES CONFIG_ (id),
+  inputValue VARCHAR(4000)
 );
 --  ARTIFACT
 CREATE SEQUENCE ARTIFACT_ID

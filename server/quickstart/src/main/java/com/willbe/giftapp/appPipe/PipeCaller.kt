@@ -21,7 +21,8 @@ fun getContext(): ThreadLocal<Context> {
 class PipeCaller(app: App_DTO, widgetsConfig: List<AppWidgetDTO>) {
     var handlers: MutableList<Handler> = ArrayList()
     //    var  context: Context = context;
-    var app: App_DTO;
+    var app: App_DTO
+    var widgetsConfig = widgetsConfig
 
     init {
         this.app = app;
@@ -37,13 +38,15 @@ class PipeCaller(app: App_DTO, widgetsConfig: List<AppWidgetDTO>) {
             }
         }
         this.handlers.add(GradleHandler())
+        this.handlers.add(PostHandler())
     }
 
     @Throws(IOException::class)
     fun call() {
         var uuid: String = UUID.randomUUID().toString()
         var context = Context(uuid, uuid)
-        context.app=app
+        context.app = app
+        context.appWidgetDTOList = widgetsConfig
         setContext(context)
 
         for (handler in handlers) {

@@ -13,14 +13,12 @@ package com.willbe.giftapp.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
- * Simple DTO for AppWidget.
+ * Simple DTO for WidgetConfig.
  */
-public class AppWidgetDTO {
+public class WidgetConfigDTO {
     public Integer id;
-    public String rule;
-    public App_DTO app;
-    public String inputValue;
-    public Integer type;
+    public String inputvalue;
+    public Config_DTO config;
 
     @JsonIgnore
     public boolean isIdSet() {

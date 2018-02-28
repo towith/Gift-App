@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 public class Config_DTO {
     public Integer id;
-    public String ruleValue;
     public User_DTO user;
     public App_DTO app;
 

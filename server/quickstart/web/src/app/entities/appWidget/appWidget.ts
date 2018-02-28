@@ -13,18 +13,18 @@ import {App_} from '../app_/app_';
 export class AppWidget {
     // Raw attributes
     id: number;
+    type: number;
     rule: string;
     // x-to-one
     app: App_;
-    ruleObj: JSON;
-    inputValue:string;
+    inputValue: string;
 
 
     constructor(json?: any) {
         if (json != null) {
             this.id = json.id;
+            this.type = json.type;
             this.rule = json.rule;
-            this.ruleObj = eval('(' + this.rule + ')');
 
             if (json.app != null) {
                 this.app = new App_(json.app);

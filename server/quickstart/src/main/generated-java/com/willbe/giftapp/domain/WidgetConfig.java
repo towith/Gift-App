@@ -20,8 +20,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.logging.Logger;
@@ -29,22 +27,21 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-@Table(name = "app_widget")
-public class AppWidget implements Identifiable<Integer>, Serializable {
+@Table(name = "widget_config")
+public class WidgetConfig implements Identifiable<Integer>, Serializable {
     private static final long serialVersionUID = 1L;
-    private static final Logger log = Logger.getLogger(AppWidget.class.getName());
+    private static final Logger log = Logger.getLogger(WidgetConfig.class.getName());
 
     // Raw attributes
     private Integer id;
-    private Integer type;
-    private String rule;
+    private String inputvalue;
 
     // Many to one
-    private App_ app;
+    private Config_ config;
 
     @Override
     public String entityClassName() {
-        return AppWidget.class.getSimpleName();
+        return WidgetConfig.class.getSimpleName();
     }
 
     // -- [id] ------------------------
@@ -62,7 +59,7 @@ public class AppWidget implements Identifiable<Integer>, Serializable {
         this.id = id;
     }
 
-    public AppWidget id(Integer id) {
+    public WidgetConfig id(Integer id) {
         setId(id);
         return this;
     }
@@ -72,37 +69,20 @@ public class AppWidget implements Identifiable<Integer>, Serializable {
     public boolean isIdSet() {
         return id != null;
     }
-    // -- [type] ------------------------
-
-    @Digits(integer = 10, fraction = 0)
-    @NotNull
-    @Column(name = "\"type\"", nullable = false, precision = 10)
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public AppWidget type(Integer type) {
-        setType(type);
-        return this;
-    }
-    // -- [rule] ------------------------
+    // -- [inputvalue] ------------------------
 
     @Size(max = 4000)
-    @Column(name = "rule", length = 4000)
-    public String getRule() {
-        return rule;
+    @Column(name = "inputvalue", length = 4000)
+    public String getInputvalue() {
+        return inputvalue;
     }
 
-    public void setRule(String rule) {
-        this.rule = rule;
+    public void setInputvalue(String inputvalue) {
+        this.inputvalue = inputvalue;
     }
 
-    public AppWidget rule(String rule) {
-        setRule(rule);
+    public WidgetConfig inputvalue(String inputvalue) {
+        setInputvalue(inputvalue);
         return this;
     }
 
@@ -111,33 +91,31 @@ public class AppWidget implements Identifiable<Integer>, Serializable {
     // -----------------------------------------------------------------
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // many-to-one: AppWidget.app ==> App_.id
+    // many-to-one: WidgetConfig.config ==> Config_.id
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    @JoinColumn(name = "app_id", nullable = false)
+    @JoinColumn(name = "config_id")
     @ManyToOne
-    public App_ getApp() {
-        return app;
+    public Config_ getConfig() {
+        return config;
     }
 
     /**
-     * Set the {@link #app} without adding this AppWidget instance on the passed {@link #app}
-     * If you want to preserve referential integrity we recommend to use
-     * instead the corresponding adder method provided by {@link App_}
+     * Set the {@link #config} without adding this WidgetConfig instance on the passed {@link #config}
      */
-    public void setApp(App_ app) {
-        this.app = app;
+    public void setConfig(Config_ config) {
+        this.config = config;
     }
 
-    public AppWidget app(App_ app) {
-        setApp(app);
+    public WidgetConfig config(Config_ config) {
+        setConfig(config);
         return this;
     }
 
     /**
      * Apply the default values.
      */
-    public AppWidget withDefaults() {
+    public WidgetConfig withDefaults() {
         return this;
     }
 
@@ -146,7 +124,7 @@ public class AppWidget implements Identifiable<Integer>, Serializable {
      */
     @Override
     public boolean equals(Object other) {
-        return this == other || (other instanceof AppWidget && hashCode() == other.hashCode());
+        return this == other || (other instanceof WidgetConfig && hashCode() == other.hashCode());
     }
 
     private IdentifiableHashBuilder identifiableHashBuilder = new IdentifiableHashBuilder();
@@ -157,15 +135,14 @@ public class AppWidget implements Identifiable<Integer>, Serializable {
     }
 
     /**
-     * Construct a readable string representation for this AppWidget instance.
+     * Construct a readable string representation for this WidgetConfig instance.
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this) //
                 .add("id", getId()) //
-                .add("type", getType()) //
-                .add("rule", getRule()) //
+                .add("inputvalue", getInputvalue()) //
                 .toString();
     }
 }

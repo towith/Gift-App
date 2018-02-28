@@ -34,9 +34,9 @@
 		<md-card-content>
 			<p-dataTable #dt [value]="currentPage.content" [lazy]="true" [paginator]="false" [responsive]="true">
 				<p-column styleClass="col-icon">
-					<ng-template let-appWidget="rowData" pTemplate="body">
-						<div *ngIf="appWidget.ruleObj['type']==1" class="input">
-							<label>{{appWidget.ruleObj.label}}</label>
+					<ng-template let-appWidget="rowData"  pTemplate="body">
+						<div *ngIf="appWidget.type==1" class="input">
+							<label>{{(appWidget.rule | toJson).label}}</label>
 							<input pInputText [(ngModel)]="appWidget.inputValue" name="inputValue" #inputValue="ngModel"/>
 						</div>
 					</ng-template>

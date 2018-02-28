@@ -14,7 +14,7 @@ class SubStringHandler(widgetConfig: WidgetConfig) : Handler {
 
 
     fun apply(replacement: String, context: Context) {
-        var targetFile =widgetConfig.placeHolder
+        var targetFile = widgetConfig.targetFile
         replace(targetFile, widgetConfig.placeHolder, replacement)
     }
 

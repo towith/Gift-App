@@ -21,7 +21,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.logging.Logger;
 
@@ -35,7 +34,6 @@ public class Config_ implements Identifiable<Integer>, Serializable {
 
     // Raw attributes
     private Integer id;
-    private String ruleValue;
 
     // Many to one
     private User_ user;
@@ -73,20 +71,6 @@ public class Config_ implements Identifiable<Integer>, Serializable {
     }
     // -- [ruleValue] ------------------------
 
-    @Size(max = 4000)
-    @Column(name = "rule_value", length = 4000)
-    public String getRuleValue() {
-        return ruleValue;
-    }
-
-    public void setRuleValue(String ruleValue) {
-        this.ruleValue = ruleValue;
-    }
-
-    public Config_ ruleValue(String ruleValue) {
-        setRuleValue(ruleValue);
-        return this;
-    }
 
     // -----------------------------------------------------------------
     // Many to One support
@@ -167,7 +151,6 @@ public class Config_ implements Identifiable<Integer>, Serializable {
     public String toString() {
         return MoreObjects.toStringHelper(this) //
                 .add("id", getId()) //
-                .add("ruleValue", getRuleValue()) //
                 .toString();
     }
 }

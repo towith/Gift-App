@@ -11,7 +11,6 @@
   - The Server Provide management and customization of gift.
     > ui consistence
     
-    
 ## Generation of app:
   - separation of widget(with content replacement)
      > does not separate app, but separate logically, so define replacement operation

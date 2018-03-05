@@ -1,3 +1,9 @@
+# Design Components:
+  - If add social activity, this can be achieved based on wei xin account and interaction with wei win message.
+   > 
+   social thing is good for propagation
+   the human desire to show off his ability
+   
 # To Accomplish:
 ## Layer:
   - The generation app is a layer to assembly the bottom widget.
@@ -12,3 +18,6 @@
   - operation unit
   - code generation
   - app build
+  
+  
+

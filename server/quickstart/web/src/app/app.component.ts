@@ -23,14 +23,19 @@ import {MessageService} from './service/message.service';
     moduleId: module.id,
     selector: 'app-root',
     template: `
+		<div>
+			test <a href="/bench/____">bench</a>
+			<mat-divider></mat-divider>
+			<a (click)="quickAuth()">auth</a>
+		</div>
 		<p-growl [value]="msgs"></p-growl>
 
 		<div class="ui-g layout">
 			<!--<div class="ui-g-12 ui-md-1">The West...</div>-->
 			<div class="ui-g-12 ui-md-12 ui-g-nopad">
-				<div class="ui-g-12 ui-g-nopad" style="font-size: 14px;">
-					<p-menubar [model]="items"></p-menubar>
-				</div>
+				<!--<div class="ui-g-12 ui-g-nopad" style="font-size: 14px;">-->
+					<!--<p-menubar [model]="items"></p-menubar>-->
+				<!--</div>-->
 				<div class="ui-g-12">
 					<router-outlet></router-outlet>
 				</div>
@@ -39,38 +44,7 @@ import {MessageService} from './service/message.service';
 				<!--<i class="fa fa-github-alt"></i> <a href="https://github.com/jaxio/celerio-angular-quickstart">https://github.com/jaxio/celerio-angular-quickstart</a>-->
 				<!--</div>-->
 			</div>
-		</div>
-		<p-dialog header="Please login" [visible]="displayLoginDialog" [responsive]="true" showEffect="fade" [modal]="true" [closable]="false" *ngIf="!authenticated">
-			<p>When using the sample database, use admin/admin</p>
-			<div ngForm class="ui-g">
-				<div class="ui-g-12" *ngIf="loginFailed">
-					<div class="ui-message ui-messages-error ui-corner-all">
-						Invalid login or password
-					</div>
-				</div>
-				<div class="ui-g-12">
-					<div class="ui-g-4">
-						<label for="j_username">Username</label>
-					</div>
-					<div class="ui-g-8">
-						<input pInputText id="j_username" [(ngModel)]="j_username" name="username"/>
-					</div>
-				</div>
-				<div class="ui-g-12">
-					<div class="ui-g-4">
-						<label for="j_password">Password</label>
-					</div>
-					<div class="ui-g-8">
-						<input type="password" pPassword id="j_password" [(ngModel)]="j_password" name="password"/>
-					</div>
-				</div>
-			</div>
-			<footer>
-				<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-					<button pButton type="button" (click)="login()" icon="fa-sign-in" label="Login"></button>
-				</div>
-			</footer>
-		</p-dialog>
+		</div>		<!--<p-dialog header="Please login" [visible]="displayLoginDialog" [responsive]="true" showEffect="fade" [modal]="true" [closable]="false" *ngIf="!authenticated">-->			<!--<p>When using the sample database, use admin/admin</p>-->			<!--<div ngForm class="ui-g">-->				<!--<div class="ui-g-12" *ngIf="loginFailed">-->					<!--<div class="ui-message ui-messages-error ui-corner-all">-->						<!--Invalid login or password-->					<!--</div>-->				<!--</div>-->				<!--<div class="ui-g-12">-->					<!--<div class="ui-g-4">-->						<!--<label for="j_username">Username</label>-->					<!--</div>-->					<!--<div class="ui-g-8">-->						<!--<input pInputText id="j_username" [(ngModel)]="j_username" name="username"/>-->					<!--</div>-->				<!--</div>-->				<!--<div class="ui-g-12">-->					<!--<div class="ui-g-4">-->						<!--<label for="j_password">Password</label>-->					<!--</div>-->					<!--<div class="ui-g-8">-->						<!--<input type="password" pPassword id="j_password" [(ngModel)]="j_password" name="password"/>-->					<!--</div>-->				<!--</div>-->			<!--</div>-->			<!--<footer>-->				<!--<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">-->					<!--<button pButton type="button" (click)="login()" icon="fa-sign-in" label="Login"></button>-->				<!--</div>-->			<!--</footer>-->		<!--</p-dialog>-->
     `,
     styles: [`
         .layout div {
@@ -186,5 +160,11 @@ export class AppComponent implements OnInit {
             error.status ? `Status: ${error.status} - Text: ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);
+    }
+
+    quickAuth() {
+        this.j_username = 'admin';
+        this.j_password = 'admin';
+        this.login();
     }
 }

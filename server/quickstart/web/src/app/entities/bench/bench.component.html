@@ -1,30 +1,43 @@
-<div>
-	<div class="ui-g-12 ui-md-1">
-		<p-dataList>
-
-		</p-dataList>
-	</div>
-	<div class="ui-g-12 ui-md-11 ui-g-nopad">
-		<mat-card>
-			<mat-card-content>
-				<p>The list of results below is server-side paginated...</p>
-				<p-dataTable #dt [value]="currentPage.content" [lazy]="true" [rows]="10" [paginator]="currentPage.totalElements > 10" [totalRecords]="currentPage.totalElements" (onLazyLoad)="loadPage($event)" selectionMode="single" (onRowSelect)="onRowSelect($event)" [rowsPerPageOptions]="[5,10,20,50,100]" [responsive]="true">
-					<p-header>{{header}} (count: {{currentPage.totalElements}})</p-header>
-					<p-column field="category_" header="Category " sortable="true"></p-column>
-					<p-column field="templatePath" header="Template Path" sortable="true"></p-column>
-					<p-column styleClass="col-icon">
-						<ng-template let-app_="rowData" pTemplate="body">
-							<button  pButton type="button" icon="fa-trash" (click)="showDeleteDialog(app_)" style="float:left"></button>
-						</ng-template>
-					</p-column>
-				</p-dataTable>
-			</mat-card-content>
-			<mat-card-actions>
-				<button mat-raised-button (click)="addNew()">
-					<mat-icon>add</mat-icon>
-					Add
-				</button>
-			</mat-card-actions>
-		</mat-card>
-	</div>
-</div>
+<mat-sidenav-container>
+	<mat-sidenav mode="side" opened>
+		<mat-menu>
+			<button mat-menu-item>Item 1</button>
+			<button mat-menu-item>Item 2</button>
+		</mat-menu>
+	</mat-sidenav>
+	<mat-sidenav-content>
+		<mat-vertical-stepper [linear]="true" #stepper="matVerticalStepper">
+			<mat-step [stepControl]="firstFormGroup">
+				<form [formGroup]="firstFormGroup">
+					<ng-template matStepLabel>Fill out your name</ng-template>
+					<mat-form-field>
+						<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+					</mat-form-field>
+					<div>
+						<button mat-button matStepperNext>Next</button>
+					</div>
+				</form>
+			</mat-step>
+			<mat-step [stepControl]="secondFormGroup">
+				<form [formGroup]="secondFormGroup">
+					<ng-template matStepLabel>Fill out your address</ng-template>
+					<mat-form-field>
+						<input matInput placeholder="Address" formControlName="secondCtrl" required>
+					</mat-form-field>
+					<div>
+						<button mat-button matStepperPrevious>Back</button>
+						<button mat-button matStepperNext>Next</button>
+					</div>
+				</form>
+			</mat-step>
+			<mat-step>
+				<ng-template matStepLabel>Done</ng-template>
+				You are now done.
+				<div>
+					<button mat-button matStepperPrevious>Back</button>
+					<button mat-button (click)="stepper.reset()">Reset</button>
+				</div>
+			</mat-step>
+		</mat-vertical-stepper>
+	</mat-sidenav-content>
+</mat-sidenav-container>

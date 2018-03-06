@@ -8,6 +8,7 @@ import {DataTable, LazyLoadEvent} from "primeng/primeng";
 import {PageResponse} from "../../support/paging";
 import {ConfirmDeleteDialogComponent} from "../../support/confirm-delete-dialog.component";
 import {App_} from "../../entities/app_/app_";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
     selector: 'app-bench',
@@ -16,9 +17,16 @@ import {App_} from "../../entities/app_/app_";
 })
 export class BenchComponent implements OnInit {
     ngOnInit(): void {
+        this.firstFormGroup = this._formBuilder.group({
+            firstCtrl: ['', Validators.required]
+        });
+        this.secondFormGroup = this._formBuilder.group({
+            secondCtrl: ['', Validators.required]
+        });
     }
 
-
+    firstFormGroup: FormGroup;
+    secondFormGroup: FormGroup;
     @Input() header = "App_s...";
 
     // When 'sub' is true, it means this list is used as a one-to-many list.
@@ -41,7 +49,8 @@ export class BenchComponent implements OnInit {
     constructor(private router: Router,
                 private app_Service: App_Service,
                 private messageService: MessageService,
-                private confirmDeleteDialog: MatDialog) {
+                private confirmDeleteDialog: MatDialog,
+                private _formBuilder: FormBuilder) {
     }
 
     /**

@@ -3,7 +3,7 @@ import 'rxjs/add/observable/throw';
 import {Router} from "@angular/router";
 import {MessageService} from "../../service/message.service";
 import {App_Service} from "../../entities/app_/app_.service";
-import {MdDialog} from "@angular/material";
+import {MatDialog} from "@angular/material";
 import {DataTable, LazyLoadEvent} from "primeng/primeng";
 import {PageResponse} from "../../support/paging";
 import {ConfirmDeleteDialogComponent} from "../../support/confirm-delete-dialog.component";
@@ -41,7 +41,7 @@ export class BenchComponent implements OnInit {
     constructor(private router: Router,
                 private app_Service: App_Service,
                 private messageService: MessageService,
-                private confirmDeleteDialog: MdDialog) {
+                private confirmDeleteDialog: MatDialog) {
     }
 
     /**

@@ -12,9 +12,9 @@ $output.file("web/src/app/entities/${entity.model.var}/${entity.model.var}-list.
 #end
 ## END MACRO
 <div class="ContentSideSections Implementation">
-    <md-card *ngIf="!sub">
-        <md-card-title>Search ${entity.model.type} with search criterias</md-card-title>
-        <md-card-content>
+    <mat-card *ngIf="!sub">
+        <mat-card-title>Search ${entity.model.type} with search criterias</mat-card-title>
+        <mat-card-content>
         <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" ngForm #${entity.model.var}Form="ngForm">
 #foreach($attr in $entity.searchAttributes.list)
 #if($attr.isSimpleFk())
@@ -32,17 +32,17 @@ $output.file("web/src/app/entities/${entity.model.var}/${entity.model.var}-list.
 #end
         </div>
 
-        </md-card-content>
-        <md-card-actions>
-            <button md-raised-button (click)="search(dt)"><md-icon>search</md-icon>Search</button>
-        </md-card-actions>
-    </md-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button (click)="search(dt)"><mat-icon>search</mat-icon>Search</button>
+        </mat-card-actions>
+    </mat-card>
 
-    <md-card>
+    <mat-card>
 #if($entity.hasComment())
-    <md-card-subtitle>DB comment: ${entity.comment}</md-card-subtitle>
+    <mat-card-subtitle>DB comment: ${entity.comment}</mat-card-subtitle>
 #end
-    <md-card-content>
+    <mat-card-content>
     <p>The list of results below is server-side paginated...</p>
 
     <p-dataTable #dt [value]="currentPage.content"
@@ -96,13 +96,13 @@ $output.file("web/src/app/entities/${entity.model.var}/${entity.model.var}-list.
 #end
         <p-column styleClass="col-icon">
             <ng-template let-$entity.model.var="rowData" pTemplate="body">
-                <button type="button" pButton icon="fa-trash" (click)="showDeleteDialog($entity.model.var)" style="float:left"></button>
+                <button  pButton type="button" icon="fa-trash" (click)="showDeleteDialog($entity.model.var)" style="float:left"></button>
             </ng-template>
         </p-column>
     </p-dataTable>
-    </md-card-content>
-    <md-card-actions>
-        <button md-raised-button (click)="addNew()"><md-icon>add</md-icon>Add</button>
-    </md-card-actions>
-    </md-card>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon>Add</button>
+    </mat-card-actions>
+    </mat-card>
 </div>

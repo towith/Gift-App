@@ -1,7 +1,7 @@
 <div class="ContentSideSections Implementation">
-    <md-card *ngIf="widgetConfig" ngForm #widgetConfigForm="ngForm">
-        <md-card-title>WidgetConfig Details</md-card-title>
-        <md-card-content>
+    <mat-card *ngIf="widgetConfig" ngForm #widgetConfigForm="ngForm">
+        <mat-card-title>WidgetConfig Details</mat-card-title>
+        <mat-card-content>
         <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
              <div class="ui-grid-row">
                 <div class="ui-grid-col-2"><label for="config">Config</label></div>
@@ -9,10 +9,10 @@
                     <config_-auto-complete [(ngModel)]="widgetConfig.config" id="config" name="config" [disabled]="sub"></config_-auto-complete>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="gotoConfig" type="button" (click)="gotoConfig()" *ngIf="widgetConfig.config" icon="fa-pencil" label="Edit"></button>
+                    <button pButton type="button" id="gotoConfig" type="button" (click)="gotoConfig()" *ngIf="widgetConfig.config" icon="fa-pencil" label="Edit"></button>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="clearConfig" type="button" (click)="clearConfig()" *ngIf="widgetConfig.config" icon="fa-chain-broken" label="Clear"></button>
+                    <button pButton type="button" id="clearConfig" type="button" (click)="clearConfig()" *ngIf="widgetConfig.config" icon="fa-chain-broken" label="Clear"></button>
                 </div>
             </div>
              <div class="ui-grid-row">
@@ -24,11 +24,11 @@
                 </div>
             </div>
          </div>
-        </md-card-content>
-        <md-card-actions>
-            <button md-raised-button *ngIf="sub" (click)="onCancel()"><md-icon>cancel</md-icon>Cancel</button>
-            <button md-raised-button (click)="onSave()" [disabled]="!widgetConfigForm.form.valid"><md-icon>save</md-icon>Save</button>
-        </md-card-actions>
-    </md-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!widgetConfigForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
 
 </div>

@@ -1,7 +1,7 @@
 <div class="ContentSideSections Implementation">
-    <md-card *ngIf="role" ngForm #roleForm="ngForm">
-        <md-card-title>Role Details</md-card-title>
-        <md-card-content>
+    <mat-card *ngIf="role" ngForm #roleForm="ngForm">
+        <mat-card-title>Role Details</mat-card-title>
+        <mat-card-content>
         <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
              <div class="ui-grid-row">
                 <div class="ui-grid-col-2"><label for="roleName">Role Name  *</label></div>
@@ -16,11 +16,11 @@
                 </div>
             </div>
          </div>
-        </md-card-content>
-        <md-card-actions>
-            <button md-raised-button *ngIf="sub" (click)="onCancel()"><md-icon>cancel</md-icon>Cancel</button>
-            <button md-raised-button (click)="onSave()" [disabled]="!roleForm.form.valid"><md-icon>save</md-icon>Save</button>
-        </md-card-actions>
-    </md-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!roleForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
 
 </div>

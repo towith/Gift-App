@@ -1,7 +1,7 @@
 <div class="ContentSideSections Implementation">
-    <md-card *ngIf="user_" ngForm #user_Form="ngForm">
-        <md-card-title>User_ Details</md-card-title>
-        <md-card-content>
+    <mat-card *ngIf="user_" ngForm #user_Form="ngForm">
+        <mat-card-title>User_ Details</mat-card-title>
+        <mat-card-content>
         <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
              <div class="ui-grid-row">
                 <div class="ui-grid-col-2"><label for="login">Login  *</label></div>
@@ -76,27 +76,27 @@
                 </div>
             </div>
           </div>
-        </md-card-content>
-        <md-card-actions>
-            <button md-raised-button *ngIf="sub" (click)="onCancel()"><md-icon>cancel</md-icon>Cancel</button>
-            <button md-raised-button (click)="onSave()" [disabled]="!user_Form.form.valid"><md-icon>save</md-icon>Save</button>
-        </md-card-actions>
-    </md-card>
-    <md-card *ngIf="user_ && user_.id">
-    <md-card-subtitle>User_ db relations</md-card-subtitle>
-    <md-card-content>
-    <md-tab-group>
-        <md-tab label="Passports">
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!user_Form.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card *ngIf="user_ && user_.id">
+    <mat-card-subtitle>User_ db relations</mat-card-subtitle>
+    <mat-card-content>
+    <mat-tab-group>
+        <mat-tab label="Passports">
             <passport-list [holder]="user_" sub="true"></passport-list>
-        </md-tab>
-        <md-tab label="Roles">
+        </mat-tab>
+        <mat-tab label="Roles">
             <p-pickList [source]="sourceRoles" [target]="user_.roles" sourceHeader="Available" targetHeader="Selected" [responsive]="true">
                 <ng-template let-role pTemplate="item">
 {{ role.roleName }}                 </ng-template>
             </p-pickList>
-        </md-tab>
+        </mat-tab>
 
-    </md-tab-group>
-    </md-card-content>
-    </md-card>
+    </mat-tab-group>
+    </mat-card-content>
+    </mat-card>
 </div>

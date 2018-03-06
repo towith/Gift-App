@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 import {DataTable, LazyLoadEvent} from 'primeng/primeng';
 import {PageResponse} from "../../support/paging";
 import {MessageService} from '../../service/message.service';
-import {MdDialog} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {AppWidget} from './appWidget';
 import {AppWidgetService} from './appWidget.service';
 import {App_} from '../app_/app_';
@@ -50,7 +50,7 @@ export class WidgetConfigComponent {
     constructor(private router: Router,
                 private appWidgetService: AppWidgetService,
                 private messageService: MessageService,
-                private confirmDeleteDialog: MdDialog) {
+                private confirmDeleteDialog: MatDialog) {
     }
 
     /**

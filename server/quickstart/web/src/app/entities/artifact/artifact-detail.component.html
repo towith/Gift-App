@@ -1,7 +1,7 @@
 <div class="ContentSideSections Implementation">
-    <md-card *ngIf="artifact" ngForm #artifactForm="ngForm">
-        <md-card-title>Artifact Details</md-card-title>
-        <md-card-content>
+    <mat-card *ngIf="artifact" ngForm #artifactForm="ngForm">
+        <mat-card-title>Artifact Details</mat-card-title>
+        <mat-card-content>
         <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
              <div class="ui-grid-row">
                 <div class="ui-grid-col-2"><label for="app">App*</label></div>
@@ -9,10 +9,10 @@
                     <app_-auto-complete [(ngModel)]="artifact.app" id="app" name="app" [disabled]="sub"></app_-auto-complete>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="gotoApp" type="button" (click)="gotoApp()" *ngIf="artifact.app" icon="fa-pencil" label="Edit"></button>
+                    <button pButton type="button" id="gotoApp" type="button" (click)="gotoApp()" *ngIf="artifact.app" icon="fa-pencil" label="Edit"></button>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="clearApp" type="button" (click)="clearApp()" *ngIf="artifact.app" icon="fa-chain-broken" label="Clear"></button>
+                    <button pButton type="button" id="clearApp" type="button" (click)="clearApp()" *ngIf="artifact.app" icon="fa-chain-broken" label="Clear"></button>
                 </div>
             </div>
              <div class="ui-grid-row">
@@ -21,10 +21,10 @@
                     <user_-auto-complete [(ngModel)]="artifact.user" id="user" name="user" [disabled]="sub"></user_-auto-complete>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="gotoUser" type="button" (click)="gotoUser()" *ngIf="artifact.user" icon="fa-pencil" label="Edit"></button>
+                    <button pButton type="button" id="gotoUser" type="button" (click)="gotoUser()" *ngIf="artifact.user" icon="fa-pencil" label="Edit"></button>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="clearUser" type="button" (click)="clearUser()" *ngIf="artifact.user" icon="fa-chain-broken" label="Clear"></button>
+                    <button pButton type="button" id="clearUser" type="button" (click)="clearUser()" *ngIf="artifact.user" icon="fa-chain-broken" label="Clear"></button>
                 </div>
             </div>
              <div class="ui-grid-row">
@@ -33,10 +33,10 @@
                     <config_-auto-complete [(ngModel)]="artifact.config" id="config" name="config" [disabled]="sub"></config_-auto-complete>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="gotoConfig" type="button" (click)="gotoConfig()" *ngIf="artifact.config" icon="fa-pencil" label="Edit"></button>
+                    <button pButton type="button" id="gotoConfig" type="button" (click)="gotoConfig()" *ngIf="artifact.config" icon="fa-pencil" label="Edit"></button>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="clearConfig" type="button" (click)="clearConfig()" *ngIf="artifact.config" icon="fa-chain-broken" label="Clear"></button>
+                    <button pButton type="button" id="clearConfig" type="button" (click)="clearConfig()" *ngIf="artifact.config" icon="fa-chain-broken" label="Clear"></button>
                 </div>
             </div>
              <div class="ui-grid-row">
@@ -48,11 +48,11 @@
                 </div>
             </div>
          </div>
-        </md-card-content>
-        <md-card-actions>
-            <button md-raised-button *ngIf="sub" (click)="onCancel()"><md-icon>cancel</md-icon>Cancel</button>
-            <button md-raised-button (click)="onSave()" [disabled]="!artifactForm.form.valid"><md-icon>save</md-icon>Save</button>
-        </md-card-actions>
-    </md-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!artifactForm.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
 
 </div>

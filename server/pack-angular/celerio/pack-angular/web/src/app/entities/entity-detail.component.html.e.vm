@@ -7,10 +7,10 @@ $output.file("web/src/app/entities/${entity.model.var}/${entity.model.var}-detai
                     <${relation.toEntity.model.var}-auto-complete [(ngModel)]="${entity.model.var}.${relation.to.var}" id="${relation.to.var}" name="${relation.to.var}" [disabled]="sub"></${relation.toEntity.model.var}-auto-complete>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="goto${relation.to.varUp}" type="button" (click)="goto${relation.to.varUp}()" *ngIf="${entity.model.var}.${relation.to.var}" icon="fa-pencil" label="Edit"></button>
+                    <button pButton type="button" id="goto${relation.to.varUp}" type="button" (click)="goto${relation.to.varUp}()" *ngIf="${entity.model.var}.${relation.to.var}" icon="fa-pencil" label="Edit"></button>
                 </div>
                 <div class="ui-grid-col-1" *ngIf="!sub">
-                    <button pButton id="clear${relation.to.varUp}" type="button" (click)="clear${relation.to.varUp}()" *ngIf="${entity.model.var}.${relation.to.var}" icon="fa-chain-broken" label="Clear"></button>
+                    <button pButton type="button" id="clear${relation.to.varUp}" type="button" (click)="clear${relation.to.varUp}()" *ngIf="${entity.model.var}.${relation.to.var}" icon="fa-chain-broken" label="Clear"></button>
                 </div>
             </div>
 #end
@@ -25,9 +25,9 @@ $output.file("web/src/app/entities/${entity.model.var}/${entity.model.var}-detai
 #end
 ## -- [/MACROS]
 <div class="ContentSideSections Implementation">
-    <md-card *ngIf="$entity.model.var" ngForm #${entity.model.var}Form="ngForm">
-        <md-card-title>$entity.model.type Details</md-card-title>
-        <md-card-content>
+    <mat-card *ngIf="$entity.model.var" ngForm #${entity.model.var}Form="ngForm">
+        <mat-card-title>$entity.model.type Details</mat-card-title>
+        <mat-card-content>
         <div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad">
 ## ---------------------------------------------------------
 #foreach($attr in $entity.formAttributes.flatUp.list)
@@ -126,45 +126,45 @@ $output.file("web/src/app/entities/${entity.model.var}/${entity.model.var}-detai
 #end
 ## ---------------------------------------------------------
         </div>
-        </md-card-content>
-        <md-card-actions>
-            <button md-raised-button *ngIf="sub" (click)="onCancel()"><md-icon>cancel</md-icon>Cancel</button>
-            <button md-raised-button (click)="onSave()" [disabled]="!${entity.model.var}Form.form.valid"><md-icon>save</md-icon>Save</button>
-        </md-card-actions>
-    </md-card>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button *ngIf="sub" (click)="onCancel()"><mat-icon>cancel</mat-icon>Cancel</button>
+            <button mat-raised-button (click)="onSave()" [disabled]="!${entity.model.var}Form.form.valid"><mat-icon>save</mat-icon>Save</button>
+        </mat-card-actions>
+    </mat-card>
 ##
 ## TABS FOR RELATIONS
 ##
 #if($entity.inverseOneToOne.flatUp.size > 0 || $entity.oneToMany.flatUp.size > 0 || $entity.manyToMany.flatUp.size > 0)
-    <md-card *ngIf="$entity.model.var && ${entity.model.var}.$identifiableProperty.var">
-    <md-card-subtitle>$entity.model.type db relations</md-card-subtitle>
-    <md-card-content>
-    <md-tab-group>
+    <mat-card *ngIf="$entity.model.var && ${entity.model.var}.$identifiableProperty.var">
+    <mat-card-subtitle>$entity.model.type db relations</mat-card-subtitle>
+    <mat-card-content>
+    <mat-tab-group>
 #end
 #foreach ($relation in $entity.inverseOneToOne.flatUp.list)
-        <md-tab label="$relation.to.varsUp">
+        <mat-tab label="$relation.to.varsUp">
             <${relation.toEntity.model.var}-list [$relation.from.var]="${entity.model.var}" sub="true"></${relation.toEntity.model.var}-list>
-        </md-tab>
+        </mat-tab>
 #end
 #foreach ($relation in $entity.oneToMany.flatUp.list)
-        <md-tab label="$relation.to.varsUp">
+        <mat-tab label="$relation.to.varsUp">
             <${relation.toEntity.model.var}-list *ngIf="show$relation.to.varsUp" [$relation.from.var]="$entity.model.var" sub="true" [header]="'$relation.to.varsUp of this $entity.model.var'" (onAddNewClicked)="show$relation.to.varsUp = false"></${relation.toEntity.model.var}-list>
             <${relation.toEntity.model.var}-detail *ngIf="!show$relation.to.varsUp" [$relation.from.var]="$entity.model.var" sub="true" (onSaveClicked)="show$relation.to.varsUp = true" (onCancelClicked)="show$relation.to.varsUp = true"></${relation.toEntity.model.var}-detail>
-        </md-tab>
+        </mat-tab>
 #end
 #foreach ($relation in $entity.manyToMany.flatUp.list)
-        <md-tab label="$relation.to.varsUp">
+        <mat-tab label="$relation.to.varsUp">
             <p-pickList [source]="source$relation.to.varsUp" [target]="${entity.model.var}.$relation.to.vars" sourceHeader="Available" targetHeader="Selected" [responsive]="true">
                 <ng-template let-$relation.to.var pTemplate="item">
 #foreach($attr in $relation.toEntity.printerAttributes.flatUp.list){{ ${relation.to.var}.${attr.var} }} #end
                 </ng-template>
             </p-pickList>
-        </md-tab>
+        </mat-tab>
 #end
 
 #if($entity.inverseOneToOne.flatUp.size > 0 || $entity.oneToMany.flatUp.size > 0 || $entity.manyToMany.flatUp.size > 0)
-    </md-tab-group>
-    </md-card-content>
-    </md-card>
+    </mat-tab-group>
+    </mat-card-content>
+    </mat-card>
 #end
 </div>

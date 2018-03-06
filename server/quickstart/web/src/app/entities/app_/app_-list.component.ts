@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 import {DataTable, LazyLoadEvent} from 'primeng/primeng';
 import {PageResponse} from "../../support/paging";
 import {MessageService} from '../../service/message.service';
-import {MdDialog} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {ConfirmDeleteDialogComponent} from "../../support/confirm-delete-dialog.component";
 import {App_} from './app_';
 import {App_Service} from './app_.service';
@@ -47,7 +47,7 @@ export class App_ListComponent {
     constructor(private router : Router,
         private app_Service : App_Service,
         private messageService : MessageService,
-        private confirmDeleteDialog: MdDialog) {
+        private confirmDeleteDialog: MatDialog) {
     }
 
     /**

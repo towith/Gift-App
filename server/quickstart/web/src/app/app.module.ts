@@ -13,7 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {MaterialModule} from '@angular/material';
+import {MatCardModule, MatDialogModule, MatIconModule, MatTabsModule} from '@angular/material';
 import {
     AutoCompleteModule,
     ButtonModule,
@@ -36,7 +36,7 @@ import {
     PickListModule,
     SharedModule,
     TabViewModule,
-    TriStateCheckboxModule
+    TriStateCheckboxModule,
 } from 'primeng/primeng';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './home.component';
@@ -118,7 +118,7 @@ import {ToJsonPipe} from './support/to-json.pipe';
         HttpModule,
 
 // angular material,
-        MaterialModule,
+        MatDialogModule,
 
 // primeng
         ConfirmDialogModule,
@@ -142,7 +142,9 @@ import {ToJsonPipe} from './support/to-json.pipe';
         TabViewModule,
         DataGridModule,
         DataListModule,
-
+        MatCardModule,
+        MatIconModule,
+        MatTabsModule,
 // our application routes
         routing
     ],

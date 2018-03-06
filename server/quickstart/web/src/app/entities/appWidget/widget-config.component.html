@@ -1,7 +1,7 @@
 <div class="ContentSideSections Implementation">
-	<md-card *ngIf="!sub">
-		<md-card-title>Search AppWidget with search criterias</md-card-title>
-		<md-card-content>
+	<mat-card *ngIf="!sub">
+		<mat-card-title>Search AppWidget with search criterias</mat-card-title>
+		<mat-card-content>
 			<div class="ui-grid ui-grid-responsive ui-fluid ui-grid-pad" ngForm #appWidgetForm="ngForm">
 				<div class="ui-grid-row">
 					<div class="ui-grid-col-2">
@@ -21,17 +21,17 @@
 				</div>
 			</div>
 
-		</md-card-content>
-		<md-card-actions>
-			<button md-raised-button (click)="search(dt)">
-				<md-icon>search</md-icon>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-raised-button (click)="search(dt)">
+				<mat-icon>search</mat-icon>
 				Search
 			</button>
-		</md-card-actions>
-	</md-card>
+		</mat-card-actions>
+	</mat-card>
 
-	<md-card>
-		<md-card-content>
+	<mat-card>
+		<mat-card-content>
 			<p-dataTable #dt [value]="currentPage.content" [lazy]="true" [paginator]="false" [responsive]="true">
 				<p-column styleClass="col-icon">
 					<ng-template let-appWidget="rowData"  pTemplate="body">
@@ -42,12 +42,12 @@
 					</ng-template>
 				</p-column>
 			</p-dataTable>
-		</md-card-content>
-		<md-card-actions>
-			<button md-raised-button (click)="saveAndGenApp(currentPage.content)">
-				<md-icon>save</md-icon>
+		</mat-card-content>
+		<mat-card-actions>
+			<button mat-raised-button (click)="saveAndGenApp(currentPage.content)">
+				<mat-icon>save</mat-icon>
 				SaveAndGen
 			</button>
-		</md-card-actions>
-	</md-card>
+		</mat-card-actions>
+	</mat-card>
 </div>

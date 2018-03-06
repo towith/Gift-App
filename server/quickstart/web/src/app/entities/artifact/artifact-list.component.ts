@@ -13,7 +13,7 @@ import {Router} from '@angular/router';
 import {DataTable, LazyLoadEvent} from 'primeng/primeng';
 import {PageResponse} from "../../support/paging";
 import {MessageService} from '../../service/message.service';
-import {MdDialog} from '@angular/material';
+import {MatDialog} from '@angular/material';
 import {ConfirmDeleteDialogComponent} from "../../support/confirm-delete-dialog.component";
 import {Artifact} from './artifact';
 import {ArtifactService} from './artifact.service';
@@ -55,7 +55,7 @@ export class ArtifactListComponent {
     constructor(private router : Router,
         private artifactService : ArtifactService,
         private messageService : MessageService,
-        private confirmDeleteDialog: MdDialog) {
+        private confirmDeleteDialog: MatDialog) {
     }
 
     /**

@@ -67,7 +67,7 @@ import {MessageService} from './service/message.service';
 			</div>
 			<footer>
 				<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
-					<button pButton (click)="login()" icon="fa-sign-in" label="Login"></button>
+					<button pButton type="button" (click)="login()" icon="fa-sign-in" label="Login"></button>
 				</div>
 			</footer>
 		</p-dialog>

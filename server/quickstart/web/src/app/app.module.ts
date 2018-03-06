@@ -118,8 +118,10 @@ import {ToJsonPipe} from './support/to-json.pipe';
         HttpModule,
 
 // angular material,
+        MatCardModule,
+        MatIconModule,
+        MatTabsModule,
         MatDialogModule,
-
 // primeng
         ConfirmDialogModule,
         FileUploadModule,
@@ -142,9 +144,7 @@ import {ToJsonPipe} from './support/to-json.pipe';
         TabViewModule,
         DataGridModule,
         DataListModule,
-        MatCardModule,
-        MatIconModule,
-        MatTabsModule,
+
 // our application routes
         routing
     ],

@@ -1,13 +1,17 @@
-<mat-grid-list cols="4" rowHeight="100px">
-	<mat-grid-tile *ngFor="let tile of currentPage.content" [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
-		<mat-checkbox [(ngModel)]="tile.selected"></mat-checkbox>
-		<mat-divider></mat-divider>
-		{{(tile.rule | toJson).label}}
-	</mat-grid-tile>
-</mat-grid-list>
+<section >
+	<mat-grid-list cols="4" rowHeight="100px">
+		<mat-grid-tile *ngFor="let tile of currentPage.content" [colspan]="1" [rowspan]="1" [style.background]="'lightblue'">
+			<mat-checkbox [(ngModel)]="tile.selected"></mat-checkbox>
+			<mat-divider></mat-divider>
+			{{(tile.rule | toJson).label}}
+		</mat-grid-tile>
+	</mat-grid-list>
+	<br/>
+	<mat-divider></mat-divider>
+	<br/>
+</section>
+	<button mat-raised-button color="accent" (click)="ok4select()">ok</button>
 
-<br/>
-<mat-divider></mat-divider><br/>
 
-<button mat-raised-button color="accent" (click)="ok4select()">ok</button>
+
 

@@ -18,6 +18,7 @@ export class AppWidget {
     // x-to-one
     app: App_;
     inputValue: string;
+    selected: boolean;
 
 
     constructor(json?: any) {

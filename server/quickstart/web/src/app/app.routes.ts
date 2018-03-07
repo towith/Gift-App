@@ -23,6 +23,7 @@ import {User_ListComponent} from './entities/user_/user_-list.component';
 import {User_DetailComponent} from './entities/user_/user_-detail.component';
 import {BenchComponent} from "./entities/bench/bench.component";
 import {App_DetailComponent} from "./entities/app_/app_-detail.component";
+import {WidgetChooserComponent} from "./entities/widgetChooser/widget-chooser/widget-chooser.component";
 
 export const routes: Routes = [
     {path: '', component: HomeComponent}
@@ -37,7 +38,7 @@ export const routes: Routes = [
     {path: 'user_/:id', component: User_DetailComponent},
     {path: 'bench/:id', component: BenchComponent},
     {path: 'app_/:id', component: App_DetailComponent},
-
+    {path: 'wc/:id', component: WidgetChooserComponent},
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

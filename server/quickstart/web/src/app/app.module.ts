@@ -14,9 +14,12 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {
+    MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatDividerModule,
+    MatGridListModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,
@@ -86,6 +89,7 @@ import {AppWidgetCompleteComponent} from "./entities/appWidget/appWidget-auto-co
 import {AppWidgetService} from "./entities/appWidget/appWidget.service";
 import {WidgetConfigComponent} from "./entities/appWidget/widget-config.component";
 import {ToJsonPipe} from './support/to-json.pipe';
+import {WidgetChooserComponent} from './entities/widgetChooser/widget-chooser/widget-chooser.component';
 
 @NgModule({
     declarations: [
@@ -118,7 +122,8 @@ import {ToJsonPipe} from './support/to-json.pipe';
         AppWidgetLineComponent,
         AppWidgetCompleteComponent,
         WidgetConfigComponent,
-        ToJsonPipe
+        ToJsonPipe,
+        WidgetChooserComponent,
     ],
     imports: [
 // angular
@@ -139,6 +144,9 @@ import {ToJsonPipe} from './support/to-json.pipe';
         MatMenuModule,
         MatStepperModule,
         MatSidenavModule,
+        MatGridListModule,
+        MatCheckboxModule,
+        MatButtonModule,
 // primeng
         ConfirmDialogModule,
         FileUploadModule,

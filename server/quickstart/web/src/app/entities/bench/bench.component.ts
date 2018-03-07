@@ -25,6 +25,7 @@ export class BenchComponent implements OnInit {
         });
     }
 
+    
     firstFormGroup: FormGroup;
     secondFormGroup: FormGroup;
     @Input() header = "App_s...";

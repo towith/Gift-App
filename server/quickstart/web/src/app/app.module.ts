@@ -25,7 +25,8 @@ import {
     MatMenuModule,
     MatSidenavModule,
     MatStepperModule,
-    MatTabsModule
+    MatTabsModule,
+    MatToolbarModule
 } from '@angular/material';
 import {
     AutoCompleteModule,
@@ -90,6 +91,7 @@ import {AppWidgetService} from "./entities/appWidget/appWidget.service";
 import {WidgetConfigComponent} from "./entities/appWidget/widget-config.component";
 import {ToJsonPipe} from './support/to-json.pipe';
 import {WidgetChooserComponent} from './entities/widgetChooser/widget-chooser/widget-chooser.component';
+import {ApplicationScopeServiceService} from "./support/application-scope-service.service";
 
 @NgModule({
     declarations: [
@@ -147,6 +149,8 @@ import {WidgetChooserComponent} from './entities/widgetChooser/widget-chooser/wi
         MatGridListModule,
         MatCheckboxModule,
         MatButtonModule,
+        MatToolbarModule,
+
 // primeng
         ConfirmDialogModule,
         FileUploadModule,
@@ -186,7 +190,8 @@ import {WidgetChooserComponent} from './entities/widgetChooser/widget-chooser/wi
         AppWidgetService,
 
 // primeng service
-        ConfirmationService
+        ConfirmationService,
+        ApplicationScopeServiceService
     ],
     entryComponents: [ConfirmDeleteDialogComponent],
     bootstrap: [AppComponent]

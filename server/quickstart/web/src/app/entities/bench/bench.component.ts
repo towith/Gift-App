@@ -8,7 +8,10 @@ import {DataTable, LazyLoadEvent} from "primeng/primeng";
 import {PageResponse} from "../../support/paging";
 import {ConfirmDeleteDialogComponent} from "../../support/confirm-delete-dialog.component";
 import {App_} from "../../entities/app_/app_";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {ApplicationScopeServiceService} from "../../support/application-scope-service.service";
+import {AppWidget} from "../appWidget/appWidget";
+import {AppWidgetService} from "../appWidget/appWidget.service";
 
 @Component({
     selector: 'app-bench',
@@ -17,17 +20,19 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class BenchComponent implements OnInit {
     ngOnInit(): void {
-        this.firstFormGroup = this._formBuilder.group({
-            firstCtrl: ['', Validators.required]
-        });
-        this.secondFormGroup = this._formBuilder.group({
-            secondCtrl: ['', Validators.required]
-        });
+        if (this.chosen) {
+            for (let aw of this.chosen) {
+                var ctrlName = 'control' + aw.id;
+                var controlsConfig = {};
+                controlsConfig[ctrlName] = [''];
+                // controlsConfig[ctrlName] = ['', Validators.required];
+                this.formGroups['' + aw.id] = this._formBuilder.group(controlsConfig);
+            }
+        }
     }
 
-    
-    firstFormGroup: FormGroup;
-    secondFormGroup: FormGroup;
+    formGroups: { [key: string]: FormGroup } = {};
+
     @Input() header = "App_s...";
 
     // When 'sub' is true, it means this list is used as a one-to-many list.
@@ -42,6 +47,7 @@ export class BenchComponent implements OnInit {
 
     // basic search criterias (visible if not in 'sub' mode)
     example: App_ = new App_();
+    chosen: AppWidget[];
 
     // list is paginated
     currentPage: PageResponse<App_> = new PageResponse<App_>(0, 0, []);
@@ -51,7 +57,10 @@ export class BenchComponent implements OnInit {
                 private app_Service: App_Service,
                 private messageService: MessageService,
                 private confirmDeleteDialog: MatDialog,
-                private _formBuilder: FormBuilder) {
+                private _formBuilder: FormBuilder,
+                private applicationScope: ApplicationScopeServiceService,
+                private appWidgetService:AppWidgetService) {
+        this.chosen = this.applicationScope.chosenWidget;
     }
 
     /**
@@ -125,4 +134,11 @@ export class BenchComponent implements OnInit {
         );
     }
 
+    ok4config() {
+        this.appWidgetService.saveConfigAndGenApp(this.chosen).subscribe(
+            pageResponse => this.currentPage = pageResponse,
+            error => this.messageService.error('Could not get the results', error)
+        );
+
+    }
 }

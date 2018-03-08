@@ -3,6 +3,8 @@ import {AppWidget} from "../../appWidget/appWidget";
 import {AppWidgetService} from "../../appWidget/appWidget.service";
 import {PageResponse} from "../../../support/paging";
 import {MessageService} from "../../../service/message.service";
+import {Router} from "@angular/router";
+import {ApplicationScopeServiceService} from "../../../support/application-scope-service.service";
 
 @Component({
     selector: 'app-widget-chooser',
@@ -13,7 +15,8 @@ export class WidgetChooserComponent implements OnInit {
     example: AppWidget;
     currentPage: PageResponse<AppWidget> = new PageResponse<AppWidget>(0, 0, []);
 
-    constructor(private appWidgetService: AppWidgetService, private messageService: MessageService) {
+    constructor(private appWidgetService: AppWidgetService, private messageService: MessageService
+        , private router: Router, private applicationScope: ApplicationScopeServiceService) {
     }
 
     ngOnInit() {
@@ -24,8 +27,14 @@ export class WidgetChooserComponent implements OnInit {
     }
 
     ok4select() {
-        console.log("wow")
-        debugger;
-
+        var widgetList: AppWidget[] = this.currentPage.content;
+        var chosen = [];
+        for (let widget of widgetList) {
+            if (widget.selected) {
+                chosen.push(widget);
+            }
+        }
+        this.applicationScope.chosenWidget = chosen;
+        this.router.navigate(['/bench', '___']);
     }
 }

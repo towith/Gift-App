@@ -52,6 +52,7 @@ class PipeCaller(app: App_DTO, widgetsConfig: List<AppWidgetDTO>) {
         context.appWidgetDTOList = widgetsConfig
         setContext(context)
 
+        println("pipeline [$uuid] begins")
         for (handler in handlers) {
             println("start handler:" + handler::class)
             var start = System.currentTimeMillis()

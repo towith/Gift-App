@@ -1,43 +1,56 @@
+<mat-sidenav-container autosize>
+	<mat-sidenav #drawer mode="side" opened="true">
+		<mat-toolbar>
+			<mat-toolbar-row>
+				<span>First Row</span>
+			</mat-toolbar-row>
+			<mat-toolbar-row>
+				<span>Second Row</span>
+			</mat-toolbar-row>
+		</mat-toolbar>
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+		<mat-vertical-stepper [linear]="true" #stepper="matVerticalStepper" *ngIf="chosen">
+			<mat-step [stepControl]="formGroups[w.id + '']" *ngFor="let w of chosen;let i=index;let last=last;let first=first;let odd=odd;let even=even;">
+				<form [formGroup]="formGroups[w.id + '']">
+					<ng-template matStepLabel>{{(w.rule | toJson).label}}</ng-template>
+					<!--control-->
+					<mat-form-field *ngIf="w.type==1">
+						<input matInput placeholder="Last name, First name" [(ngModel)]="w.inputValue" formControlName="{{'control' + w.id}}">
+					</mat-form-field>
+					<!---->
+					<!--button-->
+					<div *ngIf="!first && !last">
+						<button mat-button matStepperPrevious>Back</button>
+					</div>
+					<div *ngIf="!last">
+						<button mat-button matStepperNext>Next</button>
+					</div>
+					<div *ngIf="last">
+						<button mat-raised-button (click)="stepper.reset()">Reset</button>
+						<button mat-mini-fab (click)="ok4config()" color="primary">
+							<mat-icon aria-label=" a heart icon">favorite</mat-icon>
+						</button>
+					</div>
+					<!---->
+				</form>
+			</mat-step>
+
+		</mat-vertical-stepper>
+
+		<button type="button" mat-button (click)="drawer.toggle()">
+			Toggle sidenav
+		</button>
+
+	</mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<!--
 <mat-sidenav-container>
-	<mat-sidenav mode="side" opened>
-		<mat-menu>
-			<button mat-menu-item>Item 1</button>
-			<button mat-menu-item>Item 2</button>
-		</mat-menu>
+	<mat-sidenav mode="side" opened >
 	</mat-sidenav>
 	<mat-sidenav-content>
-		<mat-vertical-stepper [linear]="true" #stepper="matVerticalStepper">
-			<mat-step [stepControl]="firstFormGroup">
-				<form [formGroup]="firstFormGroup">
-					<ng-template matStepLabel>Fill out your name</ng-template>
-					<mat-form-field>
-						<input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-					</mat-form-field>
-					<div>
-						<button mat-button matStepperNext>Next</button>
-					</div>
-				</form>
-			</mat-step>
-			<mat-step [stepControl]="secondFormGroup">
-				<form [formGroup]="secondFormGroup">
-					<ng-template matStepLabel>Fill out your address</ng-template>
-					<mat-form-field>
-						<input matInput placeholder="Address" formControlName="secondCtrl" required>
-					</mat-form-field>
-					<div>
-						<button mat-button matStepperPrevious>Back</button>
-						<button mat-button matStepperNext>Next</button>
-					</div>
-				</form>
-			</mat-step>
-			<mat-step>
-				<ng-template matStepLabel>Done</ng-template>
-				You are now done.
-				<div>
-					<button mat-button matStepperPrevious>Back</button>
-					<button mat-button (click)="stepper.reset()">Reset</button>
-				</div>
-			</mat-step>
-		</mat-vertical-stepper>
 	</mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container>-->

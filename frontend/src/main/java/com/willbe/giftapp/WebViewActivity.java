@@ -29,6 +29,8 @@ public class WebViewActivity extends AppCompatActivity {
             }
         });
 
-        webView.loadUrl("http://10.0.2.2:4200/");
+        webView.loadUrl("http://10.0.2.2:4200");
+//        webView.loadUrl("http://localhost:4200/");
+//        webView.loadUrl("http://app.gift.com:4200/");
     }
 }
